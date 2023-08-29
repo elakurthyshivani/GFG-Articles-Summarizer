@@ -1,0 +1,7 @@
+# Ignore the following files when pushing to GIT
+
+# Dataset folder downloaded using Kaggle
+dataset/geeksforgeeks-articles/
+
+# kaggle.json file generated from the BuildingDataset.ipynb
+dataset/kaggle.json
