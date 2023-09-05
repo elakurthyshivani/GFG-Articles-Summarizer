@@ -14,3 +14,60 @@ pip install --user https://github.com/explosion/spacy-models/releases/download/e
 ```
 
 ### Setup Requirements
+
+**1. Python**:
+Check if it is installed.
+```bash
+python --version
+```
+**2. Java**:
+Check if Java is installed.
+```bash
+javac -version
+```
+If not, then install it using the following commands.
+```bash
+sudo apt-get install openjdk-8-jdk
+```
+**3. Spark** and **Hadoop**:
+Download the latest version of the following Spark and Hadoop binaries. I'm extracting these files into `hadoop` folder.
+```bash
+wget https://dlcdn.apache.org/spark/spark-3.4.1/spark-3.4.1-bin-without-hadoop.tgz
+wget https://downloads.apache.org/hadoop/common/hadoop-3.3.6/hadoop-3.3.6.tar.gz
+tar -xvf spark-3.4.1-bin-without-hadoop.tgz -C ../hadoop
+tar -xvf hadoop-3.3.6.tar.gz -C ../hadoop
+```
+**4.** Path for `JAVA_HOME`:
+Run the following command and the path up to `/jre` represents `JAVA_HOME`.
+```bash
+update-alternatives --display java
+```
+**5.** Edit the following file and add the environment configurations:
+```bash
+vi ~/.profile
+```
+```
+export SPARK_HOME=Users/selak001/Dependencies/hadoop/spark-3.4.1-bin-without-hadoop
+export HADOOP_HOME=Users/selak001/Dependencies/hadoop/hadoop-3.3.6
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/jre
+```
+To reflect these changes, run the following command:
+```bash
+source ~/.profile
+```
+**6. PySpark**:
+```bash
+pip install pyarrow
+```
+**7.** Go to the folder of the extracted Spark files and go into `conf/`. Edit the following file:
+```bash
+vi spark-env.sh
+```
+```
+export SPARK_DIST_CLASSPATH=$(Users/selak001/Dependencies/hadoop/hadoop-3.3.6/bin/hadoop classpath)
+```
+**8.** Check if PySpark is configured correctly:
+```bash
+sudo su
+# pyspark
+```
