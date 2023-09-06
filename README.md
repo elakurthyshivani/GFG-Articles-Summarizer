@@ -57,6 +57,7 @@ source ~/.profile
 ```
 **6. PySpark**:
 ```bash
+pip install pyspark
 pip install pyarrow
 ```
 **7.** Go to the folder of the extracted Spark files and go into `conf/`. Edit the following file:
