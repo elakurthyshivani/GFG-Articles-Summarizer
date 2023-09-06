@@ -71,3 +71,16 @@ export SPARK_DIST_CLASSPATH=$(Users/selak001/Dependencies/hadoop/hadoop-3.3.6/bi
 sudo su
 # pyspark
 ```
+
+### Installing and configuring dependencies for Azure Blob Storage
+
+**1.** Download the latest version of the following jar files into the desired directory: 
+```
+wget https://repo1.maven.org/maven2/org/apache/hadoop/hadoop-azure/3.3.6/hadoop-azure-3.3.6.jar
+wget https://repo1.maven.org/maven2/com/microsoft/azure/azure-storage/8.6.6/azure-storage-8.6.6.jar
+```
+
+**2.** Use the jar files in the PySpark shell environment:
+```
+pyspark --jars jar-files/hadoop-azure-3.3.6.jar,jar-files/azure-storage-8.6.6.jar
+```
