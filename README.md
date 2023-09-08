@@ -8,7 +8,7 @@ These can be installed before running the Python notebooks using the following c
 
 ```bash
 pip install azure.storage.blob
-pip install nltk, spacy, pyspark
+pip install nltk spacy pyspark
 pip install bs4 opendatasets
 pip install --user https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.0.0/en_core_web_sm-3.0.0.tar.gz 
 ```
