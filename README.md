@@ -21,17 +21,7 @@ Check if it is installed.
 python --version
 ```
 
-**2. Java**:
-Check if Java is installed.
-```bash
-javac -version
-```
-If not, then install it using the following commands.
-```bash
-sudo apt-get install openjdk-8-jdk
-```
-
-**3.** Download the compatible version of azure-cosmosdb-spark jar file (with pyspark version) into the desired directory:
+**2.** Download the compatible version of azure-cosmosdb-spark jar file (with pyspark version) into the desired directory:
 ```
 wget https://repo1.maven.org/maven2/com/azure/cosmos/spark/azure-cosmos-spark_3-3_2-12/4.21.1/azure-cosmos-spark_3-3_2-12-4.21.1.jar
 ```
@@ -39,7 +29,7 @@ Cosmos DB Spark Connectors are available at [https://github.com/Azure/azure-sdk-
 
 To check the version compatibility of the connector - [https://github.com/Azure/azure-sdk-for-java/tree/main/sdk/cosmos/azure-cosmos-spark_3-3_2-12](https://github.com/Azure/azure-sdk-for-java/tree/main/sdk/cosmos/azure-cosmos-spark_3-3_2-12). I've using `4.21.0` version of Cosmos DB Spark Connector 3 for PySpark version `3.3.0`.
 
-**4.** Use the jar files in the PySpark shell environment:
+**3.** Use the jar files in the PySpark shell environment:
 ```
 pyspark --jars ../jar-files/azure-cosmos-spark_3-3_2-12-4.21.1.jar
 ```
