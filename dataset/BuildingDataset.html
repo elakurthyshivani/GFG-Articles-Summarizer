@@ -15119,7 +15119,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[20]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
@@ -15127,6 +15127,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <span class="o">!{</span>sys.executable<span class="o">}</span><span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>bs4<span class="w"> </span>#<span class="w"> </span>BeautifulSoup
 <span class="o">!{</span>sys.executable<span class="o">}</span><span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>opendatasets<span class="w"> </span>#<span class="w"> </span>OpenDatasets
 <span class="o">!{</span>sys.executable<span class="o">}</span><span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>azure.storage.blob<span class="w"> </span>#<span class="w"> </span>Azure<span class="w"> </span>Blob<span class="w"> </span>Storage
+<span class="o">!{</span>sys.executable<span class="o">}</span><span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>azure-cosmos<span class="w"> </span>#<span class="w"> </span>Azure<span class="w"> </span>Cosmos<span class="w"> </span>DB
 </pre></div>
 
      </div>
@@ -15151,14 +15152,14 @@ Requirement already satisfied: beautifulsoup4 in /anaconda/envs/jupyter_env/lib/
 Requirement already satisfied: soupsieve&gt;1.2 in /anaconda/envs/jupyter_env/lib/python3.8/site-packages (from beautifulsoup4-&gt;bs4) (2.4.1)
 Requirement already satisfied: opendatasets in /anaconda/envs/jupyter_env/lib/python3.8/site-packages (0.1.22)
 Requirement already satisfied: kaggle in /anaconda/envs/jupyter_env/lib/python3.8/site-packages (from opendatasets) (1.5.16)
-Requirement already satisfied: tqdm in /anaconda/envs/jupyter_env/lib/python3.8/site-packages (from opendatasets) (4.66.1)
 Requirement already satisfied: click in /anaconda/envs/jupyter_env/lib/python3.8/site-packages (from opendatasets) (8.1.3)
+Requirement already satisfied: tqdm in /anaconda/envs/jupyter_env/lib/python3.8/site-packages (from opendatasets) (4.66.1)
 Requirement already satisfied: certifi in /anaconda/envs/jupyter_env/lib/python3.8/site-packages (from kaggle-&gt;opendatasets) (2023.5.7)
-Requirement already satisfied: requests in /anaconda/envs/jupyter_env/lib/python3.8/site-packages (from kaggle-&gt;opendatasets) (2.31.0)
-Requirement already satisfied: urllib3 in /anaconda/envs/jupyter_env/lib/python3.8/site-packages (from kaggle-&gt;opendatasets) (1.26.16)
-Requirement already satisfied: python-dateutil in /anaconda/envs/jupyter_env/lib/python3.8/site-packages (from kaggle-&gt;opendatasets) (2.8.2)
-Requirement already satisfied: python-slugify in /anaconda/envs/jupyter_env/lib/python3.8/site-packages (from kaggle-&gt;opendatasets) (8.0.1)
 Requirement already satisfied: six&gt;=1.10 in /anaconda/envs/jupyter_env/lib/python3.8/site-packages (from kaggle-&gt;opendatasets) (1.16.0)
+Requirement already satisfied: urllib3 in /anaconda/envs/jupyter_env/lib/python3.8/site-packages (from kaggle-&gt;opendatasets) (1.26.16)
+Requirement already satisfied: python-slugify in /anaconda/envs/jupyter_env/lib/python3.8/site-packages (from kaggle-&gt;opendatasets) (8.0.1)
+Requirement already satisfied: python-dateutil in /anaconda/envs/jupyter_env/lib/python3.8/site-packages (from kaggle-&gt;opendatasets) (2.8.2)
+Requirement already satisfied: requests in /anaconda/envs/jupyter_env/lib/python3.8/site-packages (from kaggle-&gt;opendatasets) (2.31.0)
 Requirement already satisfied: bleach in /anaconda/envs/jupyter_env/lib/python3.8/site-packages (from kaggle-&gt;opendatasets) (6.0.0)
 Requirement already satisfied: webencodings in /anaconda/envs/jupyter_env/lib/python3.8/site-packages (from bleach-&gt;kaggle-&gt;opendatasets) (0.5.1)
 Requirement already satisfied: text-unidecode&gt;=1.3 in /anaconda/envs/jupyter_env/lib/python3.8/site-packages (from python-slugify-&gt;kaggle-&gt;opendatasets) (1.3)
@@ -15166,17 +15167,26 @@ Requirement already satisfied: idna&lt;4,&gt;=2.5 in /anaconda/envs/jupyter_env/
 Requirement already satisfied: charset-normalizer&lt;4,&gt;=2 in /anaconda/envs/jupyter_env/lib/python3.8/site-packages (from requests-&gt;kaggle-&gt;opendatasets) (3.1.0)
 Requirement already satisfied: azure.storage.blob in /anaconda/envs/jupyter_env/lib/python3.8/site-packages (12.16.0)
 Requirement already satisfied: isodate&gt;=0.6.1 in /anaconda/envs/jupyter_env/lib/python3.8/site-packages (from azure.storage.blob) (0.6.1)
-Requirement already satisfied: cryptography&gt;=2.1.4 in /anaconda/envs/jupyter_env/lib/python3.8/site-packages (from azure.storage.blob) (41.0.1)
-Requirement already satisfied: typing-extensions&gt;=4.0.1 in /anaconda/envs/jupyter_env/lib/python3.8/site-packages (from azure.storage.blob) (4.6.3)
 Requirement already satisfied: azure-core&lt;2.0.0,&gt;=1.26.0 in /anaconda/envs/jupyter_env/lib/python3.8/site-packages (from azure.storage.blob) (1.27.1)
+Requirement already satisfied: typing-extensions&gt;=4.0.1 in /anaconda/envs/jupyter_env/lib/python3.8/site-packages (from azure.storage.blob) (4.6.3)
+Requirement already satisfied: cryptography&gt;=2.1.4 in /anaconda/envs/jupyter_env/lib/python3.8/site-packages (from azure.storage.blob) (41.0.1)
 Requirement already satisfied: six&gt;=1.11.0 in /anaconda/envs/jupyter_env/lib/python3.8/site-packages (from azure-core&lt;2.0.0,&gt;=1.26.0-&gt;azure.storage.blob) (1.16.0)
 Requirement already satisfied: requests&gt;=2.18.4 in /anaconda/envs/jupyter_env/lib/python3.8/site-packages (from azure-core&lt;2.0.0,&gt;=1.26.0-&gt;azure.storage.blob) (2.31.0)
 Requirement already satisfied: cffi&gt;=1.12 in /anaconda/envs/jupyter_env/lib/python3.8/site-packages (from cryptography&gt;=2.1.4-&gt;azure.storage.blob) (1.15.1)
 Requirement already satisfied: pycparser in /anaconda/envs/jupyter_env/lib/python3.8/site-packages (from cffi&gt;=1.12-&gt;cryptography&gt;=2.1.4-&gt;azure.storage.blob) (2.21)
-Requirement already satisfied: charset-normalizer&lt;4,&gt;=2 in /anaconda/envs/jupyter_env/lib/python3.8/site-packages (from requests&gt;=2.18.4-&gt;azure-core&lt;2.0.0,&gt;=1.26.0-&gt;azure.storage.blob) (3.1.0)
-Requirement already satisfied: urllib3&lt;3,&gt;=1.21.1 in /anaconda/envs/jupyter_env/lib/python3.8/site-packages (from requests&gt;=2.18.4-&gt;azure-core&lt;2.0.0,&gt;=1.26.0-&gt;azure.storage.blob) (1.26.16)
 Requirement already satisfied: idna&lt;4,&gt;=2.5 in /anaconda/envs/jupyter_env/lib/python3.8/site-packages (from requests&gt;=2.18.4-&gt;azure-core&lt;2.0.0,&gt;=1.26.0-&gt;azure.storage.blob) (3.4)
+Requirement already satisfied: urllib3&lt;3,&gt;=1.21.1 in /anaconda/envs/jupyter_env/lib/python3.8/site-packages (from requests&gt;=2.18.4-&gt;azure-core&lt;2.0.0,&gt;=1.26.0-&gt;azure.storage.blob) (1.26.16)
 Requirement already satisfied: certifi&gt;=2017.4.17 in /anaconda/envs/jupyter_env/lib/python3.8/site-packages (from requests&gt;=2.18.4-&gt;azure-core&lt;2.0.0,&gt;=1.26.0-&gt;azure.storage.blob) (2023.5.7)
+Requirement already satisfied: charset-normalizer&lt;4,&gt;=2 in /anaconda/envs/jupyter_env/lib/python3.8/site-packages (from requests&gt;=2.18.4-&gt;azure-core&lt;2.0.0,&gt;=1.26.0-&gt;azure.storage.blob) (3.1.0)
+Requirement already satisfied: azure-cosmos in /anaconda/envs/jupyter_env/lib/python3.8/site-packages (4.5.0)
+Requirement already satisfied: azure-core&lt;2.0.0,&gt;=1.23.0 in /anaconda/envs/jupyter_env/lib/python3.8/site-packages (from azure-cosmos) (1.27.1)
+Requirement already satisfied: six&gt;=1.11.0 in /anaconda/envs/jupyter_env/lib/python3.8/site-packages (from azure-core&lt;2.0.0,&gt;=1.23.0-&gt;azure-cosmos) (1.16.0)
+Requirement already satisfied: typing-extensions&gt;=4.3.0 in /anaconda/envs/jupyter_env/lib/python3.8/site-packages (from azure-core&lt;2.0.0,&gt;=1.23.0-&gt;azure-cosmos) (4.6.3)
+Requirement already satisfied: requests&gt;=2.18.4 in /anaconda/envs/jupyter_env/lib/python3.8/site-packages (from azure-core&lt;2.0.0,&gt;=1.23.0-&gt;azure-cosmos) (2.31.0)
+Requirement already satisfied: idna&lt;4,&gt;=2.5 in /anaconda/envs/jupyter_env/lib/python3.8/site-packages (from requests&gt;=2.18.4-&gt;azure-core&lt;2.0.0,&gt;=1.23.0-&gt;azure-cosmos) (3.4)
+Requirement already satisfied: urllib3&lt;3,&gt;=1.21.1 in /anaconda/envs/jupyter_env/lib/python3.8/site-packages (from requests&gt;=2.18.4-&gt;azure-core&lt;2.0.0,&gt;=1.23.0-&gt;azure-cosmos) (1.26.16)
+Requirement already satisfied: charset-normalizer&lt;4,&gt;=2 in /anaconda/envs/jupyter_env/lib/python3.8/site-packages (from requests&gt;=2.18.4-&gt;azure-core&lt;2.0.0,&gt;=1.23.0-&gt;azure-cosmos) (3.1.0)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /anaconda/envs/jupyter_env/lib/python3.8/site-packages (from requests&gt;=2.18.4-&gt;azure-core&lt;2.0.0,&gt;=1.23.0-&gt;azure-cosmos) (2023.5.7)
 </pre>
 </div>
 </div>
@@ -15204,7 +15214,7 @@ Requirement already satisfied: certifi&gt;=2017.4.17 in /anaconda/envs/jupyter_e
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[21]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
@@ -15222,7 +15232,7 @@ Requirement already satisfied: certifi&gt;=2017.4.17 in /anaconda/envs/jupyter_e
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[22]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Creating kaggle.json file.</span>
@@ -15240,7 +15250,7 @@ Requirement already satisfied: certifi&gt;=2017.4.17 in /anaconda/envs/jupyter_e
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[23]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Downloading the dataset.</span>
@@ -15275,7 +15285,7 @@ Requirement already satisfied: certifi&gt;=2017.4.17 in /anaconda/envs/jupyter_e
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
-<pre>100%|██████████| 1.31M/1.31M [00:00&lt;00:00, 6.45MB/s]
+<pre>100%|██████████| 1.31M/1.31M [00:00&lt;00:00, 7.33MB/s]
 </pre>
 </div>
 </div>
@@ -15289,7 +15299,7 @@ Requirement already satisfied: certifi&gt;=2017.4.17 in /anaconda/envs/jupyter_e
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[24]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[5]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Reading the dataset.</span>
@@ -15310,7 +15320,7 @@ Requirement already satisfied: certifi&gt;=2017.4.17 in /anaconda/envs/jupyter_e
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[24]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[5]:</div>
 
 
 
@@ -15397,7 +15407,7 @@ Requirement already satisfied: certifi&gt;=2017.4.17 in /anaconda/envs/jupyter_e
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[25]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[6]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">articles</span><span class="o">.</span><span class="n">shape</span>
@@ -15416,7 +15426,7 @@ Requirement already satisfied: certifi&gt;=2017.4.17 in /anaconda/envs/jupyter_e
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[25]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[6]:</div>
 
 
 
@@ -15447,7 +15457,7 @@ Requirement already satisfied: certifi&gt;=2017.4.17 in /anaconda/envs/jupyter_e
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[26]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[7]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">articles</span><span class="o">=</span><span class="n">articles</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
@@ -15463,7 +15473,7 @@ Requirement already satisfied: certifi&gt;=2017.4.17 in /anaconda/envs/jupyter_e
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[27]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[8]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Reset index.</span>
@@ -15484,7 +15494,7 @@ Requirement already satisfied: certifi&gt;=2017.4.17 in /anaconda/envs/jupyter_e
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[27]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[8]:</div>
 
 
 
@@ -15571,7 +15581,7 @@ Requirement already satisfied: certifi&gt;=2017.4.17 in /anaconda/envs/jupyter_e
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[28]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[9]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">articles</span><span class="o">.</span><span class="n">shape</span>
@@ -15590,7 +15600,7 @@ Requirement already satisfied: certifi&gt;=2017.4.17 in /anaconda/envs/jupyter_e
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[28]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[9]:</div>
 
 
 
@@ -15612,7 +15622,7 @@ Requirement already satisfied: certifi&gt;=2017.4.17 in /anaconda/envs/jupyter_e
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Create-connection-string-to-storage-account"><strong>Create connection string to storage account</strong><a class="anchor-link" href="#Create-connection-string-to-storage-account">&#182;</a></h2><p>The new dataframe will be saved as <code>.csv</code> files in Azure Blob storage.</p>
+<h2 id="Create-connection-string-to-storage-account"><strong>Create connection string to storage account</strong><a class="anchor-link" href="#Create-connection-string-to-storage-account">&#182;</a></h2><p>The errors will be saved as a file in Azure Blob storage.</p>
 
 </div>
 </div>
@@ -15622,10 +15632,77 @@ Requirement already satisfied: certifi&gt;=2017.4.17 in /anaconda/envs/jupyter_e
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[29]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[10]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">connectionString</span><span class="o">=</span><span class="s2">&quot;DefaultEndpointsProtocol=https;AccountName=shivmldatasets;AccountKey=Uoz2wy3N+KONfZAXvPc2QG4Z+G5S6BTvPn0zK6CaoCbM30tBtbToarFMZyo0EeimLD4P8RBuzoJJ+AStJ80Qiw==;EndpointSuffix=core.windows.net&quot;</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">accountName</span><span class="o">=</span><span class="s2">&quot;shivmlstorage&quot;</span>
+<span class="n">accountKey</span><span class="o">=</span><span class="s2">&quot;CqwiRcBzBgSaIopT2NeDAGdRdSp9EilVRSUtIEBn6AiKabc2nD5BUGHo8G1DGQhcWCa+QP8qw8ND+ASt0EGz4w==&quot;</span>
+<span class="n">connectionString</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;DefaultEndpointsProtocol=https;AccountName=</span><span class="si">{</span><span class="n">accountName</span><span class="si">}</span><span class="s2">;AccountKey=</span><span class="si">{</span><span class="n">accountKey</span><span class="si">}</span><span class="s2">;EndpointSuffix=core.windows.net&quot;</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div  class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Values-for-connection-to-Azure-Cosmos-DB"><strong>Values for connection to Azure Cosmos DB</strong><a class="anchor-link" href="#Values-for-connection-to-Azure-Cosmos-DB">&#182;</a></h2><p>Each row of the dataset will be stored as an item in a container in Azure Cosmos DB.</p>
+
+</div>
+</div>
+</div>
+</div><div  class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[11]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">azure.cosmos</span> <span class="kn">import</span> <span class="n">CosmosClient</span><span class="p">,</span> <span class="n">PartitionKey</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div  class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[12]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cosmosEndpoint</span><span class="o">=</span><span class="s2">&quot;https://shivmlstorage.documents.azure.com:443/&quot;</span>
+<span class="n">cosmosKey</span><span class="o">=</span><span class="s2">&quot;4K6XRazr5I5SRoXOLZeYyHDuxpRfmjDCjf764Ih35xcZG10DrljpLZg8B86w11O0AGAgewIxt8evACDbGwqjbQ==&quot;</span>
+<span class="n">cosmosDatabase</span><span class="o">=</span><span class="s2">&quot;gfg-articles&quot;</span>
+<span class="n">cosmosContainer</span><span class="o">=</span><span class="s2">&quot;gfg-articles&quot;</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div  class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[13]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">client</span><span class="o">=</span><span class="n">CosmosClient</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">cosmosEndpoint</span><span class="p">,</span> <span class="n">credential</span><span class="o">=</span><span class="n">cosmosKey</span><span class="p">)</span>
+<span class="n">database</span><span class="o">=</span><span class="n">client</span><span class="o">.</span><span class="n">get_database_client</span><span class="p">(</span><span class="n">database</span><span class="o">=</span><span class="n">cosmosDatabase</span><span class="p">)</span>
+<span class="n">gfgArticlesContainer</span><span class="o">=</span><span class="n">database</span><span class="o">.</span><span class="n">get_container_client</span><span class="p">(</span><span class="n">cosmosContainer</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -15652,13 +15729,12 @@ Requirement already satisfied: certifi&gt;=2017.4.17 in /anaconda/envs/jupyter_e
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[30]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[14]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
 <span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">from</span> <span class="nn">concurrent.futures</span> <span class="kn">import</span> <span class="n">ThreadPoolExecutor</span><span class="p">,</span> <span class="n">as_completed</span>
-<span class="kn">from</span> <span class="nn">azure.storage.blob</span> <span class="kn">import</span> <span class="n">BlobClient</span>
 </pre></div>
 
      </div>
@@ -15671,7 +15747,7 @@ Requirement already satisfied: certifi&gt;=2017.4.17 in /anaconda/envs/jupyter_e
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[31]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[15]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Add new column to save the scrapped text from the URLs.</span>
@@ -15692,7 +15768,7 @@ Requirement already satisfied: certifi&gt;=2017.4.17 in /anaconda/envs/jupyter_e
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[31]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[15]:</div>
 
 
 
@@ -15785,7 +15861,7 @@ Requirement already satisfied: certifi&gt;=2017.4.17 in /anaconda/envs/jupyter_e
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[32]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[16]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Dictionary to save the errors occurred while scrapping text.</span>
@@ -15802,7 +15878,7 @@ Requirement already satisfied: certifi&gt;=2017.4.17 in /anaconda/envs/jupyter_e
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[33]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[17]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Set timeout.</span>
@@ -15819,7 +15895,7 @@ Requirement already satisfied: certifi&gt;=2017.4.17 in /anaconda/envs/jupyter_e
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[34]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[18]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Define a function to scrap text.</span>
@@ -15865,7 +15941,7 @@ Requirement already satisfied: certifi&gt;=2017.4.17 in /anaconda/envs/jupyter_e
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[36]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[19]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
@@ -15890,6 +15966,13 @@ Requirement already satisfied: certifi&gt;=2017.4.17 in /anaconda/envs/jupyter_e
             <span class="k">try</span><span class="p">:</span>
                 <span class="n">i</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="n">future</span><span class="o">.</span><span class="n">result</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="n">TIMEOUT_SECS</span><span class="p">)</span>
                 <span class="n">articles</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="s2">&quot;text&quot;</span><span class="p">]</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+
+                <span class="c1"># Convert this article to a dictionary and add the `id` as a string.</span>
+                <span class="n">gfgArticle</span><span class="o">=</span><span class="n">articles</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
+                <span class="n">gfgArticle</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">]</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+                <span class="c1"># Create an item in Cosmos DB.</span>
+                <span class="n">gfgArticlesContainer</span><span class="o">.</span><span class="n">create_item</span><span class="p">(</span><span class="n">gfgArticle</span><span class="p">)</span>
+
                 <span class="c1"># If `text` is empty, update count.</span>
                 <span class="k">if</span> <span class="n">text</span><span class="o">==</span><span class="s2">&quot;&quot;</span><span class="p">:</span>
                     <span class="n">countEmptyText</span><span class="o">+=</span><span class="mi">1</span>
@@ -15898,11 +15981,6 @@ Requirement already satisfied: certifi&gt;=2017.4.17 in /anaconda/envs/jupyter_e
     
     <span class="c1"># Print status.</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Batch #</span><span class="si">{</span><span class="n">batchesCount</span><span class="si">}</span><span class="s2">: Extracted `text` for </span><span class="si">{</span><span class="p">(</span><span class="n">batch_end</span><span class="o">-</span><span class="n">batch_start</span><span class="p">)</span><span class="o">-</span><span class="n">countEmptyText</span><span class="si">}</span><span class="s2"> links&quot;</span><span class="p">)</span>
-    
-    <span class="c1"># Create blob for each batch.</span>
-    <span class="n">blob</span><span class="o">=</span><span class="n">BlobClient</span><span class="o">.</span><span class="n">from_connection_string</span><span class="p">(</span><span class="n">conn_str</span><span class="o">=</span><span class="n">connectionString</span><span class="p">,</span> <span class="n">container_name</span><span class="o">=</span><span class="s2">&quot;ml-datasets&quot;</span><span class="p">,</span> <span class="n">blob_name</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;gfg-articles-scrapped-</span><span class="si">{</span><span class="n">batchesCount</span><span class="si">}</span><span class="s2">.csv&quot;</span><span class="p">)</span>
-    <span class="n">blob</span><span class="o">.</span><span class="n">upload_blob</span><span class="p">(</span><span class="n">articles</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">batch_start</span><span class="p">:</span><span class="n">batch_end</span><span class="p">]</span><span class="o">.</span><span class="n">to_csv</span><span class="p">())</span>
-
     <span class="c1"># Empty text for this batch.</span>
     <span class="n">articles</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">batch_start</span><span class="p">:</span><span class="n">batch_end</span><span class="p">,</span> <span class="s2">&quot;text&quot;</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
 </pre></div>
@@ -15933,11 +16011,11 @@ Batch #5: Extracted `text` for 1023 links
 Batch #6: Extracted `text` for 1023 links
 Batch #7: Extracted `text` for 1024 links
 Batch #8: Extracted `text` for 1023 links
-Batch #9: Extracted `text` for 1021 links
+Batch #9: Extracted `text` for 1022 links
 Batch #10: Extracted `text` for 1022 links
 Batch #11: Extracted `text` for 1024 links
 Batch #12: Extracted `text` for 1024 links
-Batch #13: Extracted `text` for 1024 links
+Batch #13: Extracted `text` for 1023 links
 Batch #14: Extracted `text` for 1024 links
 Batch #15: Extracted `text` for 1024 links
 Batch #16: Extracted `text` for 1022 links
@@ -15951,16 +16029,16 @@ Batch #23: Extracted `text` for 1023 links
 Batch #24: Extracted `text` for 1023 links
 Batch #25: Extracted `text` for 1024 links
 Batch #26: Extracted `text` for 1024 links
-Batch #27: Extracted `text` for 1021 links
+Batch #27: Extracted `text` for 1022 links
 Batch #28: Extracted `text` for 1024 links
 Batch #29: Extracted `text` for 1023 links
 Batch #30: Extracted `text` for 1023 links
-Batch #31: Extracted `text` for 1024 links
+Batch #31: Extracted `text` for 1022 links
 Batch #32: Extracted `text` for 1021 links
 Batch #33: Extracted `text` for 1024 links
 Batch #34: Extracted `text` for 759 links
-CPU times: user 2h 48min 48s, sys: 19min 36s, total: 3h 8min 25s
-Wall time: 2h 27min 7s
+CPU times: user 1h 45min 26s, sys: 6min 4s, total: 1h 51min 31s
+Wall time: 1h 41min 30s
 </pre>
 </div>
 </div>
@@ -15985,10 +16063,12 @@ Wall time: 2h 27min 7s
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[40]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[23]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Add the futureResultErrors to the scrapTextErrors and save to a blob.</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">azure.storage.blob</span> <span class="kn">import</span> <span class="n">BlobClient</span>
+
+<span class="c1"># Add the futureResultErrors to the scrapTextErrors and save to a blob.</span>
 <span class="n">scrapTextErrors</span><span class="p">[</span><span class="s2">&quot;futureResult&quot;</span><span class="p">]</span><span class="o">=</span><span class="n">futureResultErrors</span>
 
 <span class="c1"># Converting the values to string.</span>
@@ -15996,8 +16076,8 @@ Wall time: 2h 27min 7s
     <span class="n">scrapTextErrors</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
 
 <span class="c1"># Writing to blob.</span>
-<span class="n">blob</span><span class="o">=</span><span class="n">BlobClient</span><span class="o">.</span><span class="n">from_connection_string</span><span class="p">(</span><span class="n">conn_str</span><span class="o">=</span><span class="n">connectionString</span><span class="p">,</span> <span class="n">container_name</span><span class="o">=</span><span class="s2">&quot;ml-errors&quot;</span><span class="p">,</span> <span class="n">blob_name</span><span class="o">=</span><span class="s2">&quot;ScrapTextErrors.json&quot;</span><span class="p">)</span>
-<span class="n">blob</span><span class="o">.</span><span class="n">upload_blob</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">scrapTextErrors</span><span class="p">))</span>
+<span class="n">blob</span><span class="o">=</span><span class="n">BlobClient</span><span class="o">.</span><span class="n">from_connection_string</span><span class="p">(</span><span class="n">conn_str</span><span class="o">=</span><span class="n">connectionString</span><span class="p">,</span> <span class="n">container_name</span><span class="o">=</span><span class="s2">&quot;gfg-articles-errors&quot;</span><span class="p">,</span> <span class="n">blob_name</span><span class="o">=</span><span class="s2">&quot;ScrapTextErrors.json&quot;</span><span class="p">)</span>
+<span class="n">blob</span><span class="o">.</span><span class="n">upload_blob</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">scrapTextErrors</span><span class="p">),</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -16013,20 +16093,20 @@ Wall time: 2h 27min 7s
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[40]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[23]:</div>
 
 
 
 
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>{&#39;etag&#39;: &#39;&#34;0x8DBA807F74564D4&#34;&#39;,
- &#39;last_modified&#39;: datetime.datetime(2023, 8, 28, 20, 47, 16, tzinfo=datetime.timezone.utc),
- &#39;content_md5&#39;: bytearray(b&#39;\xfd\x7f\x13-\x8a\x9dm\xfd+\xf7\x958\xc2G-q&#39;),
- &#39;client_request_id&#39;: &#39;130aa122-45e4-11ee-b78c-33c210a3064a&#39;,
- &#39;request_id&#39;: &#39;aafe567d-b01e-0029-75f0-d9a912000000&#39;,
+<pre>{&#39;etag&#39;: &#39;&#34;0x8DBB2E99E6B7F4E&#34;&#39;,
+ &#39;last_modified&#39;: datetime.datetime(2023, 9, 11, 17, 7, 45, tzinfo=datetime.timezone.utc),
+ &#39;content_md5&#39;: bytearray(b&#39;\r\x980\xe8\xee\xc1\xef\xed\xccH\xfcR\xac+\xafE&#39;),
+ &#39;client_request_id&#39;: &#39;ba327966-50c5-11ee-b394-cdddc276a591&#39;,
+ &#39;request_id&#39;: &#39;fc9ca73a-901e-009e-6ed2-e458d9000000&#39;,
  &#39;version&#39;: &#39;2022-11-02&#39;,
  &#39;version_id&#39;: None,
- &#39;date&#39;: datetime.datetime(2023, 8, 28, 20, 47, 16, tzinfo=datetime.timezone.utc),
+ &#39;date&#39;: datetime.datetime(2023, 9, 11, 17, 7, 45, tzinfo=datetime.timezone.utc),
  &#39;request_server_encrypted&#39;: True,
  &#39;encryption_key_sha256&#39;: None,
  &#39;encryption_scope&#39;: None}</pre>
@@ -16050,406 +16130,6 @@ Wall time: 2h 27min 7s
 </div>
 </div>
 </div>
-</div>
-<div  class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Cleaning-the-datasets-stored-in-blob-container"><strong>Cleaning the datasets stored in blob container</strong><a class="anchor-link" href="#Cleaning-the-datasets-stored-in-blob-container">&#182;</a></h2><p>Format URL to access each dataset: <code>https://&lt;storage-account-name&gt;.blob.core.windows.net/&lt;blob-container-name&gt;/&lt;blob-name&gt;</code></p>
-<p><strong>1.</strong> After reading the first file, I noticed there is an extra row at the end and it's <code>text</code> is <code>NaN</code>. This row also appears in the next file and its value is not <code>NaN</code> and needs to be removed. This does not happen to the last file.</p>
-<p><strong>2.</strong> Also, a new column <code>Unnamed: 0</code> contains the original index. This column name needs to be renamed.</p>
-
-</div>
-</div>
-</div>
-</div><div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[48]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Read the first file.</span>
-<span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;https://shivmldatasets.blob.core.windows.net/ml-datasets/gfg-articles-scrapped-1.csv&quot;</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[48]:</div>
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Unnamed: 0</th>
-      <th>title</th>
-      <th>author_id</th>
-      <th>last_updated</th>
-      <th>link</th>
-      <th>category</th>
-      <th>text</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>0</td>
-      <td>5 Best Practices For Writing SQL Joins</td>
-      <td>priyankab14</td>
-      <td>21 Feb, 2022</td>
-      <td>https://www.geeksforgeeks.org/5-best-practices...</td>
-      <td>easy</td>
-      <td>SQL (Structured Query Language) allows us to s...</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>1</td>
-      <td>Foundation CSS Dropdown Menu</td>
-      <td>ishankhandelwals</td>
-      <td>20 Feb, 2022</td>
-      <td>https://www.geeksforgeeks.org/foundation-css-d...</td>
-      <td>easy</td>
-      <td>Foundation CSS is an open-source &amp; responsive ...</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>2</td>
-      <td>Top 20 Excel Shortcuts That You Need To Know</td>
-      <td>priyankab14</td>
-      <td>17 Feb, 2022</td>
-      <td>https://www.geeksforgeeks.org/top-20-excel-sho...</td>
-      <td>easy</td>
-      <td>Although many of us are already aware of Micro...</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>3</td>
-      <td>Servlet – Fetching Result</td>
-      <td>nishatiwari1719</td>
-      <td>17 Feb, 2022</td>
-      <td>https://www.geeksforgeeks.org/servlet-fetching...</td>
-      <td>easy</td>
-      <td>Servlet is a simple java program that runs on ...</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>4</td>
-      <td>Suffix Sum Array</td>
-      <td>rohit768</td>
-      <td>21 Feb, 2022</td>
-      <td>https://www.geeksforgeeks.org/suffix-sum-array/</td>
-      <td>easy</td>
-      <td>Suffix Sum ArrayGiven an array arr[] of size N...</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>1020</th>
-      <td>1020</td>
-      <td>How to remove unused dependencies from composer?</td>
-      <td>viditawasthi2</td>
-      <td>27 Jan, 2021</td>
-      <td>https://www.geeksforgeeks.org/how-to-remove-un...</td>
-      <td>easy</td>
-      <td>Removing unused Dependencies from Composer is ...</td>
-    </tr>
-    <tr>
-      <th>1021</th>
-      <td>1021</td>
-      <td>Modulo or Remainder Operator in Java</td>
-      <td>tejswini2000k</td>
-      <td>23 Feb, 2022</td>
-      <td>https://www.geeksforgeeks.org/modulo-or-remain...</td>
-      <td>easy</td>
-      <td>Modulo or Remainder Operator returns the remai...</td>
-    </tr>
-    <tr>
-      <th>1022</th>
-      <td>1022</td>
-      <td>Google’s Coding Competitions You Can Consider ...</td>
-      <td>sanju6890</td>
-      <td>28 Jan, 2021</td>
-      <td>https://www.geeksforgeeks.org/googles-coding-c...</td>
-      <td>easy</td>
-      <td>Want to grow your coding skills, meet like-min...</td>
-    </tr>
-    <tr>
-      <th>1023</th>
-      <td>1023</td>
-      <td>Functional Programming in Java 8+ using the St...</td>
-      <td>dimpalagrawal21</td>
-      <td>09 Dec, 2021</td>
-      <td>https://www.geeksforgeeks.org/functional-progr...</td>
-      <td>easy</td>
-      <td>API is an acronym for Application Programming ...</td>
-    </tr>
-    <tr>
-      <th>1024</th>
-      <td>1024</td>
-      <td>Java Program to Make All the Array Elements Eq...</td>
-      <td>jyoti369</td>
-      <td>28 Jan, 2021</td>
-      <td>https://www.geeksforgeeks.org/java-program-to-...</td>
-      <td>easy</td>
-      <td>NaN</td>
-    </tr>
-  </tbody>
-</table>
-<p>1025 rows × 7 columns</p>
-</div>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div><div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[47]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Read the last file.</span>
-<span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;https://shivmldatasets.blob.core.windows.net/ml-datasets/gfg-articles-scrapped-34.csv&quot;</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[47]:</div>
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Unnamed: 0</th>
-      <th>title</th>
-      <th>author_id</th>
-      <th>last_updated</th>
-      <th>link</th>
-      <th>category</th>
-      <th>text</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>33792</td>
-      <td>Maximum sum of Array formed by replacing each ...</td>
-      <td>coder001</td>
-      <td>29 Oct, 2021</td>
-      <td>https://www.geeksforgeeks.org/maximum-sum-of-a...</td>
-      <td>expert</td>
-      <td>Given an array arr[] of size N , the task is t...</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>33793</td>
-      <td>Smallest N digit number whose sum of square of...</td>
-      <td>king_tsar</td>
-      <td>17 Feb, 2022</td>
-      <td>https://www.geeksforgeeks.org/smallest-n-digit...</td>
-      <td>expert</td>
-      <td>Given an integer N, find the smallest N digit ...</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>33794</td>
-      <td>Minimum length subarray containing all unique ...</td>
-      <td>Sanjit_Prasad</td>
-      <td>18 Nov, 2021</td>
-      <td>https://www.geeksforgeeks.org/minimum-length-s...</td>
-      <td>expert</td>
-      <td>Given an array of size N containing all elemen...</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>33795</td>
-      <td>Memory Access Methods</td>
-      <td>rajkumarupadhyay515</td>
-      <td>26 Jul, 2021</td>
-      <td>https://www.geeksforgeeks.org/memory-access-me...</td>
-      <td>expert</td>
-      <td>These are 4 types of memory access methods:\n1...</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>33796</td>
-      <td>Count of subsequences whose product is a diffe...</td>
-      <td>sauravlal_2233</td>
-      <td>17 Nov, 2021</td>
-      <td>https://www.geeksforgeeks.org/count-of-subsequ...</td>
-      <td>expert</td>
-      <td>Given an array arr[] containing N elements tha...</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>754</th>
-      <td>34546</td>
-      <td>Data Structures | Queue | Question 11</td>
-      <td>GeeksforGeeks</td>
-      <td>28 Jun, 2021</td>
-      <td>https://www.geeksforgeeks.org/data-structures-...</td>
-      <td>expert</td>
-      <td>An implementation of a queue Q, using two stac...</td>
-    </tr>
-    <tr>
-      <th>755</th>
-      <td>34547</td>
-      <td>Data Structures | Binary Trees | Question 1</td>
-      <td>GeeksforGeeks</td>
-      <td>28 Jun, 2021</td>
-      <td>https://www.geeksforgeeks.org/data-structures-...</td>
-      <td>expert</td>
-      <td>Which of the following is true about Binary Tr...</td>
-    </tr>
-    <tr>
-      <th>756</th>
-      <td>34548</td>
-      <td>Amazon Interview | Set 9</td>
-      <td>GeeksforGeeks</td>
-      <td>28 Apr, 2017</td>
-      <td>https://www.geeksforgeeks.org/amazon-interview...</td>
-      <td>expert</td>
-      <td>How did it start?\nI completed and submitted t...</td>
-    </tr>
-    <tr>
-      <th>757</th>
-      <td>34549</td>
-      <td>Python Program for Rat in a Maze | Backtracking-2</td>
-      <td>GeeksforGeeks</td>
-      <td>02 Aug, 2021</td>
-      <td>https://www.geeksforgeeks.org/python-program-f...</td>
-      <td>expert</td>
-      <td>We have discussed Backtracking and Knight’s to...</td>
-    </tr>
-    <tr>
-      <th>758</th>
-      <td>34550</td>
-      <td>Data Structures and Algorithms | Set 21</td>
-      <td>GeeksforGeeks</td>
-      <td>27 Mar, 2017</td>
-      <td>https://www.geeksforgeeks.org/data-structures-...</td>
-      <td>expert</td>
-      <td>Following questions have been asked in GATE CS...</td>
-    </tr>
-  </tbody>
-</table>
-<p>759 rows × 7 columns</p>
-</div>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div><div  class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[57]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Clean the datasets.</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">35</span><span class="p">):</span>
-    <span class="n">articlesi</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;https://shivmldatasets.blob.core.windows.net/ml-datasets/gfg-articles-scrapped-</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">.csv&quot;</span><span class="p">)</span>
-    <span class="c1"># Remove last row.</span>
-    <span class="k">if</span> <span class="n">i</span><span class="o">!=</span><span class="mi">34</span><span class="p">:</span>
-        <span class="n">articlesi</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">articlesi</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="c1"># Rename column.</span>
-    <span class="n">articlesi</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Unnamed: 0&quot;</span><span class="p">:</span> <span class="s2">&quot;id&quot;</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="c1"># Save to blob.</span>
-    <span class="n">blob</span><span class="o">=</span><span class="n">BlobClient</span><span class="o">.</span><span class="n">from_connection_string</span><span class="p">(</span><span class="n">conn_str</span><span class="o">=</span><span class="n">connectionString</span><span class="p">,</span> <span class="n">container_name</span><span class="o">=</span><span class="s2">&quot;ml-datasets&quot;</span><span class="p">,</span> <span class="n">blob_name</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;gfg-articles-scrapped-</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">.csv&quot;</span><span class="p">)</span>
-    <span class="n">blob</span><span class="o">.</span><span class="n">upload_blob</span><span class="p">(</span><span class="n">articlesi</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(),</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
 </div>
 </body>
 
