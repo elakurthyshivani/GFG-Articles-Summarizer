@@ -14646,6 +14646,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
 <span class="kn">import</span> <span class="nn">opendatasets</span> <span class="k">as</span> <span class="nn">od</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">os</span>
 </pre></div>
 
      </div>
@@ -14661,9 +14662,9 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Creating kaggle.json file.</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Creating kaggle.json file. I previous saved my Kaggle username and API key as environment variables.</span>
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;kaggle.json&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">kaggleFile</span><span class="p">:</span>
-    <span class="n">kaggleFile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span><span class="s2">&quot;username&quot;</span><span class="p">:</span><span class="s2">&quot;shivanielakurthy&quot;</span><span class="p">,</span> <span class="s2">&quot;key&quot;</span><span class="p">:</span><span class="s2">&quot;da7b4ae4bd1b770cb8b74d3990fc7f43&quot;</span><span class="p">}))</span>
+    <span class="n">kaggleFile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span><span class="s2">&quot;username&quot;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;kaggleUsername&quot;</span><span class="p">],</span> <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;kaggleAPIKey&quot;</span><span class="p">]}))</span>
 </pre></div>
 
      </div>
@@ -15098,9 +15099,9 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[10]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Service role ... username and password</span>
-<span class="n">username</span><span class="o">=</span><span class="s1">&#39;MachineLearningEngineer-at-025430998545&#39;</span>
-<span class="n">password</span><span class="o">=</span><span class="s1">&#39;4SJHL2/mbWMs4SgQtxBmHFbFMpjmYQpFhOaloA3/RZ8=&#39;</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Service username and password for AWS Keyspaces. I previous saved my Keyspace credentials as environment variables.</span>
+<span class="n">username</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;keyspacesCredentialUsername&quot;</span><span class="p">]</span>
+<span class="n">password</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;keyspacesCredentialPassword&quot;</span><span class="p">]</span>
 </pre></div>
 
      </div>
@@ -15116,7 +15117,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[11]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Creates a session connection to the keyspace that is secured by TLS</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Creates a session connection to the keyspace that is secured by TLS.</span>
 <span class="n">ssl_context</span><span class="o">=</span><span class="n">SSLContext</span><span class="p">(</span><span class="n">PROTOCOL_TLSv1_2</span><span class="p">)</span>
 <span class="n">ssl_context</span><span class="o">.</span><span class="n">load_verify_locations</span><span class="p">(</span><span class="s1">&#39;../sf-class2-root.crt&#39;</span><span class="p">)</span>
 <span class="n">ssl_context</span><span class="o">.</span><span class="n">verify_mode</span><span class="o">=</span><span class="n">CERT_REQUIRED</span>
@@ -15167,7 +15168,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Scrap-text-from-the-URL-to-get-article-content"><strong>Scrap text from the URL to get article content</strong><a class="anchor-link" href="#Scrap-text-from-the-URL-to-get-article-content">&#182;</a></h2><p><strong>1.</strong> Create a new column <code>text</code> to store the scrapped text using BeautifulSoup.</p>
 <p><strong>2.</strong> Define the function to scrap text given the URL as a parameter.</p>
-<p><strong>3.</strong> In batches of 1024, use multi-threading to call this function for each row and save the resulted dataframe to a <code>.csv</code> file in Azure Blob Container.</p>
+<p><strong>3.</strong> In batches of 1024, use multi-threading to call this function for each row and save each row of the dataframe in Amazon Keyspaces.</p>
 
 </div>
 </div>
@@ -15393,8 +15394,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
-<span class="c1"># Run the above function for all the links using multithreading.</span>
-<span class="c1"># Test for batches.</span>
+<span class="c1"># Run the above function for all the links in batches using multithreading.</span>
 <span class="n">futureResultErrors</span><span class="o">=</span><span class="p">[]</span>
 <span class="n">batchesCount</span><span class="p">,</span> <span class="n">BATCH_SIZE</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1024</span>
 <span class="c1"># Print batch size</span>
@@ -15415,11 +15415,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
                 <span class="n">i</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="n">future</span><span class="o">.</span><span class="n">result</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="n">TIMEOUT_SECS</span><span class="p">)</span>
                 <span class="n">articles</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="s2">&quot;text&quot;</span><span class="p">]</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
 
-                <span class="c1"># Convert this article to a dictionary and add the `id` as a string.</span>
-                <span class="c1"># gfgArticle=articles.loc[i].to_dict()</span>
-                <span class="c1"># gfgArticle[&quot;id&quot;]=str(i)</span>
-                <span class="c1"># # Create an item in Cosmos DB.</span>
-                <span class="c1"># gfgArticlesContainer.create_item(gfgArticle)</span>
+                <span class="c1"># Insert in Amazon Keyspaces.</span>
                 <span class="n">session</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">session</span><span class="o">.</span><span class="n">prepare</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;INSERT INTO &quot;GFGArticles&quot;.&quot;GFGArticles&quot; &#39;</span>
                                                 <span class="sa">f</span><span class="s1">&#39;(&quot;ID&quot;, &quot;Title&quot;, &quot;Category&quot;, &quot;Link&quot;, &quot;LastUpdated&quot;, &quot;AuthorID&quot;, &quot;Content&quot;) &#39;</span>
                                                 <span class="sa">f</span><span class="s1">&#39;VALUES (?, ?, ?, ?, ?, ?, ?);&#39;</span><span class="p">),</span> 
@@ -15524,7 +15520,7 @@ Wall time: 1h 35min 29s
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[20]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Add the futureResultErrors to the scrapTextErrors and save to a blob.</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Add the futureResultErrors to the scrapTextErrors.</span>
 <span class="n">scrapTextErrors</span><span class="p">[</span><span class="s2">&quot;futureResult&quot;</span><span class="p">]</span><span class="o">=</span><span class="n">futureResultErrors</span>
 <span class="n">scrapTextErrors</span>
 </pre></div>
