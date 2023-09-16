@@ -14613,7 +14613,24 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 <span class="o">!{</span>sys.executable<span class="o">}</span><span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>bs4<span class="w"> </span>#<span class="w"> </span>BeautifulSoup
 <span class="o">!{</span>sys.executable<span class="o">}</span><span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>opendatasets<span class="w"> </span>#<span class="w"> </span>OpenDatasets
-<span class="o">!{</span>sys.executable<span class="o">}</span><span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>cassandra-driver<span class="w"> </span>#<span class="w"> </span>Cassandra
+<span class="o">!{</span>sys.executable<span class="o">}</span><span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>azure.storage.blob<span class="w"> </span>#<span class="w"> </span>Azure<span class="w"> </span>Blob<span class="w"> </span>Storage
+<span class="o">!{</span>sys.executable<span class="o">}</span><span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>azure-cosmos<span class="w"> </span>#<span class="w"> </span>Azure<span class="w"> </span>Cosmos<span class="w"> </span>DB
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">run</span> ../EnvironmentVariablesSetup.ipynb
 </pre></div>
 
      </div>
@@ -14640,13 +14657,12 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
 <span class="kn">import</span> <span class="nn">opendatasets</span> <span class="k">as</span> <span class="nn">od</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">os</span>
 </pre></div>
 
      </div>
@@ -14659,12 +14675,12 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Creating kaggle.json file. I previous saved my Kaggle username and API key as environment variables.</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Creating kaggle.json file.</span>
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;kaggle.json&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">kaggleFile</span><span class="p">:</span>
-    <span class="n">kaggleFile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span><span class="s2">&quot;username&quot;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;kaggleUsername&quot;</span><span class="p">],</span> <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;kaggleAPIKey&quot;</span><span class="p">]}))</span>
+    <span class="n">kaggleFile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span><span class="s2">&quot;username&quot;</span><span class="p">:</span><span class="s2">&quot;shivanielakurthy&quot;</span><span class="p">,</span> <span class="s2">&quot;key&quot;</span><span class="p">:</span><span class="s2">&quot;da7b4ae4bd1b770cb8b74d3990fc7f43&quot;</span><span class="p">}))</span>
 </pre></div>
 
      </div>
@@ -14677,7 +14693,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Downloading the dataset.</span>
@@ -14702,6 +14718,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
 <pre>Downloading geeksforgeeks-articles.zip to ./geeksforgeeks-articles
+
 </pre>
 </div>
 </div>
@@ -14711,26 +14728,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
-<pre>100%|██████████| 1.31M/1.31M [00:00&lt;00:00, 10.8MB/s]</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
-<pre>
+<pre>100%|██████████| 1.31M/1.31M [00:00&lt;00:00, 7.33MB/s]
 </pre>
 </div>
 </div>
@@ -14744,7 +14742,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[4]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[5]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Reading the dataset.</span>
@@ -14765,7 +14763,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[4]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[5]:</div>
 
 
 
@@ -14852,7 +14850,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[5]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[6]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">articles</span><span class="o">.</span><span class="n">shape</span>
@@ -14871,7 +14869,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[5]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[6]:</div>
 
 
 
@@ -14902,7 +14900,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[6]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[7]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">articles</span><span class="o">=</span><span class="n">articles</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
@@ -14918,7 +14916,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[7]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[8]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Reset index.</span>
@@ -14939,7 +14937,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[7]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[8]:</div>
 
 
 
@@ -15026,7 +15024,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[8]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[9]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">articles</span><span class="o">.</span><span class="n">shape</span>
@@ -15045,7 +15043,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[8]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[9]:</div>
 
 
 
@@ -15067,30 +15065,11 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Connect-to-Amazon-Keyspaces"><strong>Connect to Amazon Keyspaces</strong><a class="anchor-link" href="#Connect-to-Amazon-Keyspaces">&#182;</a></h2>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[9]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">cassandra.cluster</span> <span class="kn">import</span> <span class="n">Cluster</span><span class="p">,</span> <span class="n">ExecutionProfile</span><span class="p">,</span> <span class="n">EXEC_PROFILE_DEFAULT</span>
-<span class="kn">from</span> <span class="nn">ssl</span> <span class="kn">import</span> <span class="n">SSLContext</span><span class="p">,</span> <span class="n">PROTOCOL_TLSv1_2</span><span class="p">,</span> <span class="n">CERT_REQUIRED</span>
-<span class="kn">from</span> <span class="nn">cassandra.auth</span> <span class="kn">import</span> <span class="n">PlainTextAuthProvider</span>
-<span class="kn">from</span> <span class="nn">cassandra.query</span> <span class="kn">import</span> <span class="n">SimpleStatement</span>
-<span class="kn">from</span> <span class="nn">cassandra</span> <span class="kn">import</span> <span class="n">ConsistencyLevel</span>
-</pre></div>
+<h2 id="Create-connection-string-to-storage-account"><strong>Create connection string to storage account</strong><a class="anchor-link" href="#Create-connection-string-to-storage-account">&#182;</a></h2><p>The errors will be saved as a file in Azure Blob storage.</p>
 
-     </div>
 </div>
 </div>
 </div>
-
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -15099,9 +15078,9 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[10]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Service username and password for AWS Keyspaces. I previous saved my Keyspace credentials as environment variables.</span>
-<span class="n">username</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;keyspacesCredentialUsername&quot;</span><span class="p">]</span>
-<span class="n">password</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;keyspacesCredentialPassword&quot;</span><span class="p">]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">accountName</span><span class="o">=</span><span class="s2">&quot;shivmlstorage&quot;</span>
+<span class="n">accountKey</span><span class="o">=</span><span class="s2">&quot;CqwiRcBzBgSaIopT2NeDAGdRdSp9EilVRSUtIEBn6AiKabc2nD5BUGHo8G1DGQhcWCa+QP8qw8ND+ASt0EGz4w==&quot;</span>
+<span class="n">connectionString</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;DefaultEndpointsProtocol=https;AccountName=</span><span class="si">{</span><span class="n">accountName</span><span class="si">}</span><span class="s2">;AccountKey=</span><span class="si">{</span><span class="n">accountKey</span><span class="si">}</span><span class="s2">;EndpointSuffix=core.windows.net&quot;</span>
 </pre></div>
 
      </div>
@@ -15109,7 +15088,19 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 </div>
 
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Values-for-connection-to-Azure-Cosmos-DB"><strong>Values for connection to Azure Cosmos DB</strong><a class="anchor-link" href="#Values-for-connection-to-Azure-Cosmos-DB">&#182;</a></h2><p>Each row of the dataset will be stored as an item in a container in Azure Cosmos DB.</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -15117,19 +15108,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[11]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Creates a session connection to the keyspace that is secured by TLS.</span>
-<span class="n">ssl_context</span><span class="o">=</span><span class="n">SSLContext</span><span class="p">(</span><span class="n">PROTOCOL_TLSv1_2</span><span class="p">)</span>
-<span class="n">ssl_context</span><span class="o">.</span><span class="n">load_verify_locations</span><span class="p">(</span><span class="s1">&#39;../sf-class2-root.crt&#39;</span><span class="p">)</span>
-<span class="n">ssl_context</span><span class="o">.</span><span class="n">verify_mode</span><span class="o">=</span><span class="n">CERT_REQUIRED</span>
-<span class="n">exec_profile</span><span class="o">=</span><span class="n">ExecutionProfile</span><span class="p">(</span><span class="n">consistency_level</span><span class="o">=</span><span class="n">ConsistencyLevel</span><span class="o">.</span><span class="n">LOCAL_QUORUM</span><span class="p">)</span>
-<span class="n">auth_provider</span><span class="o">=</span><span class="n">PlainTextAuthProvider</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="n">password</span><span class="p">)</span>
-
-<span class="n">cluster</span><span class="o">=</span><span class="n">Cluster</span><span class="p">([</span><span class="s1">&#39;cassandra.us-east-2.amazonaws.com&#39;</span><span class="p">],</span> 
-                <span class="n">ssl_context</span><span class="o">=</span><span class="n">ssl_context</span><span class="p">,</span> 
-                <span class="n">auth_provider</span><span class="o">=</span><span class="n">auth_provider</span><span class="p">,</span> 
-                <span class="n">execution_profiles</span><span class="o">=</span><span class="p">{</span><span class="n">EXEC_PROFILE_DEFAULT</span><span class="p">:</span> <span class="n">exec_profile</span><span class="p">},</span> 
-                <span class="n">port</span><span class="o">=</span><span class="mi">9142</span><span class="p">)</span>
-<span class="n">session</span><span class="o">=</span><span class="n">cluster</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">azure.cosmos</span> <span class="kn">import</span> <span class="n">CosmosClient</span><span class="p">,</span> <span class="n">PartitionKey</span>
 </pre></div>
 
      </div>
@@ -15137,26 +15116,41 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 </div>
 
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[12]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cosmosEndpoint</span><span class="o">=</span><span class="s2">&quot;https://shivmlstorage.documents.azure.com:443/&quot;</span>
+<span class="n">cosmosKey</span><span class="o">=</span><span class="s2">&quot;4K6XRazr5I5SRoXOLZeYyHDuxpRfmjDCjf764Ih35xcZG10DrljpLZg8B86w11O0AGAgewIxt8evACDbGwqjbQ==&quot;</span>
+<span class="n">cosmosDatabase</span><span class="o">=</span><span class="s2">&quot;gfg-articles&quot;</span>
+<span class="n">cosmosContainer</span><span class="o">=</span><span class="s2">&quot;gfg-articles&quot;</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
 </div>
 
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[13]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">client</span><span class="o">=</span><span class="n">CosmosClient</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">cosmosEndpoint</span><span class="p">,</span> <span class="n">credential</span><span class="o">=</span><span class="n">cosmosKey</span><span class="p">)</span>
+<span class="n">database</span><span class="o">=</span><span class="n">client</span><span class="o">.</span><span class="n">get_database_client</span><span class="p">(</span><span class="n">database</span><span class="o">=</span><span class="n">cosmosDatabase</span><span class="p">)</span>
+<span class="n">gfgArticlesContainer</span><span class="o">=</span><span class="n">database</span><span class="o">.</span><span class="n">get_container_client</span><span class="p">(</span><span class="n">cosmosContainer</span><span class="p">)</span>
+</pre></div>
 
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
-<pre>/tmp/ipykernel_14635/4248458774.py:2: DeprecationWarning: ssl.PROTOCOL_TLSv1_2 is deprecated
-  ssl_context=SSLContext(PROTOCOL_TLSv1_2)
-</pre>
+     </div>
 </div>
 </div>
-
-</div>
-
 </div>
 
 </div>
@@ -15168,7 +15162,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Scrap-text-from-the-URL-to-get-article-content"><strong>Scrap text from the URL to get article content</strong><a class="anchor-link" href="#Scrap-text-from-the-URL-to-get-article-content">&#182;</a></h2><p><strong>1.</strong> Create a new column <code>text</code> to store the scrapped text using BeautifulSoup.</p>
 <p><strong>2.</strong> Define the function to scrap text given the URL as a parameter.</p>
-<p><strong>3.</strong> In batches of 1024, use multi-threading to call this function for each row and save each row of the dataframe in Amazon Keyspaces.</p>
+<p><strong>3.</strong> In batches of 1024, use multi-threading to call this function for each row and save the resulted dataframe to a <code>.csv</code> file in Azure Blob Container.</p>
 
 </div>
 </div>
@@ -15178,7 +15172,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[13]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[14]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
@@ -15196,7 +15190,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[14]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[15]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Add new column to save the scrapped text from the URLs.</span>
@@ -15217,7 +15211,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[14]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[15]:</div>
 
 
 
@@ -15310,7 +15304,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[15]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[16]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Dictionary to save the errors occurred while scrapping text.</span>
@@ -15327,7 +15321,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[16]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[17]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Set timeout.</span>
@@ -15344,7 +15338,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[17]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[18]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Define a function to scrap text.</span>
@@ -15390,11 +15384,12 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[18]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[19]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
-<span class="c1"># Run the above function for all the links in batches using multithreading.</span>
+<span class="c1"># Run the above function for all the links using multithreading.</span>
+<span class="c1"># Test for batches.</span>
 <span class="n">futureResultErrors</span><span class="o">=</span><span class="p">[]</span>
 <span class="n">batchesCount</span><span class="p">,</span> <span class="n">BATCH_SIZE</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1024</span>
 <span class="c1"># Print batch size</span>
@@ -15415,17 +15410,11 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
                 <span class="n">i</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="n">future</span><span class="o">.</span><span class="n">result</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="n">TIMEOUT_SECS</span><span class="p">)</span>
                 <span class="n">articles</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="s2">&quot;text&quot;</span><span class="p">]</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
 
-                <span class="c1"># Insert in Amazon Keyspaces.</span>
-                <span class="n">session</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">session</span><span class="o">.</span><span class="n">prepare</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;INSERT INTO &quot;GFGArticles&quot;.&quot;GFGArticles&quot; &#39;</span>
-                                                <span class="sa">f</span><span class="s1">&#39;(&quot;ID&quot;, &quot;Title&quot;, &quot;Category&quot;, &quot;Link&quot;, &quot;LastUpdated&quot;, &quot;AuthorID&quot;, &quot;Content&quot;) &#39;</span>
-                                                <span class="sa">f</span><span class="s1">&#39;VALUES (?, ?, ?, ?, ?, ?, ?);&#39;</span><span class="p">),</span> 
-                                <span class="n">parameters</span><span class="o">=</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> 
-                                            <span class="n">articles</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="s2">&quot;title&quot;</span><span class="p">],</span>
-                                            <span class="n">articles</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="s2">&quot;category&quot;</span><span class="p">],</span>
-                                            <span class="n">articles</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="s2">&quot;link&quot;</span><span class="p">],</span>
-                                            <span class="n">articles</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="s2">&quot;last_updated&quot;</span><span class="p">],</span>
-                                            <span class="n">articles</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="s2">&quot;author_id&quot;</span><span class="p">],</span>
-                                            <span class="n">articles</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="s2">&quot;text&quot;</span><span class="p">]])</span>
+                <span class="c1"># Convert this article to a dictionary and add the `id` as a string.</span>
+                <span class="n">gfgArticle</span><span class="o">=</span><span class="n">articles</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
+                <span class="n">gfgArticle</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">]</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+                <span class="c1"># Create an item in Cosmos DB.</span>
+                <span class="n">gfgArticlesContainer</span><span class="o">.</span><span class="n">create_item</span><span class="p">(</span><span class="n">gfgArticle</span><span class="p">)</span>
 
                 <span class="c1"># If `text` is empty, update count.</span>
                 <span class="k">if</span> <span class="n">text</span><span class="o">==</span><span class="s2">&quot;&quot;</span><span class="p">:</span>
@@ -15469,7 +15458,7 @@ Batch #9: Extracted `text` for 1022 links
 Batch #10: Extracted `text` for 1022 links
 Batch #11: Extracted `text` for 1024 links
 Batch #12: Extracted `text` for 1024 links
-Batch #13: Extracted `text` for 1024 links
+Batch #13: Extracted `text` for 1023 links
 Batch #14: Extracted `text` for 1024 links
 Batch #15: Extracted `text` for 1024 links
 Batch #16: Extracted `text` for 1022 links
@@ -15482,17 +15471,17 @@ Batch #22: Extracted `text` for 1023 links
 Batch #23: Extracted `text` for 1023 links
 Batch #24: Extracted `text` for 1023 links
 Batch #25: Extracted `text` for 1024 links
-Batch #26: Extracted `text` for 1023 links
+Batch #26: Extracted `text` for 1024 links
 Batch #27: Extracted `text` for 1022 links
 Batch #28: Extracted `text` for 1024 links
 Batch #29: Extracted `text` for 1023 links
 Batch #30: Extracted `text` for 1023 links
-Batch #31: Extracted `text` for 1024 links
+Batch #31: Extracted `text` for 1022 links
 Batch #32: Extracted `text` for 1021 links
 Batch #33: Extracted `text` for 1024 links
 Batch #34: Extracted `text` for 759 links
-CPU times: user 1h 49min 14s, sys: 4min 13s, total: 1h 53min 28s
-Wall time: 1h 35min 29s
+CPU times: user 1h 45min 26s, sys: 6min 4s, total: 1h 51min 31s
+Wall time: 1h 41min 30s
 </pre>
 </div>
 </div>
@@ -15508,7 +15497,7 @@ Wall time: 1h 35min 29s
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="See-errors"><strong>See errors</strong><a class="anchor-link" href="#See-errors">&#182;</a></h2>
+<h2 id="Save-errors-to-a-Blob"><strong>Save errors to a Blob</strong><a class="anchor-link" href="#Save-errors-to-a-Blob">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -15517,12 +15506,21 @@ Wall time: 1h 35min 29s
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[20]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[23]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Add the futureResultErrors to the scrapTextErrors.</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">azure.storage.blob</span> <span class="kn">import</span> <span class="n">BlobClient</span>
+
+<span class="c1"># Add the futureResultErrors to the scrapTextErrors and save to a blob.</span>
 <span class="n">scrapTextErrors</span><span class="p">[</span><span class="s2">&quot;futureResult&quot;</span><span class="p">]</span><span class="o">=</span><span class="n">futureResultErrors</span>
-<span class="n">scrapTextErrors</span>
+
+<span class="c1"># Converting the values to string.</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">scrapTextErrors</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">scrapTextErrors</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+
+<span class="c1"># Writing to blob.</span>
+<span class="n">blob</span><span class="o">=</span><span class="n">BlobClient</span><span class="o">.</span><span class="n">from_connection_string</span><span class="p">(</span><span class="n">conn_str</span><span class="o">=</span><span class="n">connectionString</span><span class="p">,</span> <span class="n">container_name</span><span class="o">=</span><span class="s2">&quot;gfg-articles-errors&quot;</span><span class="p">,</span> <span class="n">blob_name</span><span class="o">=</span><span class="s2">&quot;ScrapTextErrors.json&quot;</span><span class="p">)</span>
+<span class="n">blob</span><span class="o">.</span><span class="n">upload_blob</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">scrapTextErrors</span><span class="p">),</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -15538,32 +15536,23 @@ Wall time: 1h 35min 29s
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[20]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[23]:</div>
 
 
 
 
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>{537: {&#39;link&#39;: &#39;https://www.geeksforgeeks.org/geek-o-lympics-2021-let-the-fun-begin/&#39;,
-  &#39;error&#39;: AttributeError(&#34;&#39;NoneType&#39; object has no attribute &#39;find&#39;&#34;)},
- 8716: {&#39;link&#39;: &#39;https://www.geeksforgeeks.org/process-synchronization/&#39;,
-  &#39;error&#39;: AttributeError(&#34;&#39;NoneType&#39; object has no attribute &#39;find&#39;&#34;)},
- 9621: {&#39;link&#39;: &#39;https://www.geeksforgeeks.org/operating-systems-set-2/&#39;,
-  &#39;error&#39;: AttributeError(&#34;&#39;NoneType&#39; object has no attribute &#39;find&#39;&#34;)},
- 10087: {&#39;link&#39;: &#39;https://www.geeksforgeeks.org/geek-o-lympics-sale-courses-at-pocket-friendly-prices/&#39;,
-  &#39;error&#39;: AttributeError(&#34;&#39;NoneType&#39; object has no attribute &#39;find&#39;&#34;)},
- 17570: {&#39;link&#39;: &#39;https://www.geeksforgeeks.org/data-structures-hash-question-4/&#39;,
-  &#39;error&#39;: AttributeError(&#34;&#39;NoneType&#39; object has no attribute &#39;find&#39;&#34;)},
- 19289: {&#39;link&#39;: &#39;https://www.geeksforgeeks.org/how-to-calculate-and-plot-the-derivative-of-a-function-using-python-matplotlib/&#39;,
-  &#39;error&#39;: AttributeError(&#34;&#39;NoneType&#39; object has no attribute &#39;find&#39;&#34;)},
- 26343: {&#39;link&#39;: &#39;https://www.geeksforgeeks.org/count-sub-arrays-sum-divisible-k/&#39;,
-  &#39;error&#39;: AttributeError(&#34;&#39;NoneType&#39; object has no attribute &#39;find&#39;&#34;)},
- 31916: {&#39;link&#39;: &#39;https://www.geeksforgeeks.org/%c2%ad%c2%adkasais-algorithm-for-construction-of-lcp-array-from-suffix-array/&#39;,
-  &#39;error&#39;: AttributeError(&#34;&#39;NoneType&#39; object has no attribute &#39;find&#39;&#34;)},
- &#39;futureResult&#39;: [cassandra.OperationTimedOut(&#34;errors={&#39;3.12.23.142:9142&#39;: &#39;Client request timeout. See Session.execute[_async](timeout)&#39;}, last_host=3.12.23.142:9142&#34;),
-  cassandra.OperationTimedOut(&#34;errors={&#39;3.12.23.134:9142&#39;: &#39;Client request timeout. See Session.execute[_async](timeout)&#39;}, last_host=3.12.23.134:9142&#34;),
-  cassandra.OperationTimedOut(&#34;errors={&#39;3.12.23.182:9142&#39;: &#39;Client request timeout. See Session.execute[_async](timeout)&#39;}, last_host=3.12.23.182:9142&#34;),
-  cassandra.OperationTimedOut(&#34;errors={&#39;3.12.23.134:9142&#39;: &#39;Client request timeout. See Session.execute[_async](timeout)&#39;}, last_host=3.12.23.134:9142&#34;)]}</pre>
+<pre>{&#39;etag&#39;: &#39;&#34;0x8DBB2E99E6B7F4E&#34;&#39;,
+ &#39;last_modified&#39;: datetime.datetime(2023, 9, 11, 17, 7, 45, tzinfo=datetime.timezone.utc),
+ &#39;content_md5&#39;: bytearray(b&#39;\r\x980\xe8\xee\xc1\xef\xed\xccH\xfcR\xac+\xafE&#39;),
+ &#39;client_request_id&#39;: &#39;ba327966-50c5-11ee-b394-cdddc276a591&#39;,
+ &#39;request_id&#39;: &#39;fc9ca73a-901e-009e-6ed2-e458d9000000&#39;,
+ &#39;version&#39;: &#39;2022-11-02&#39;,
+ &#39;version_id&#39;: None,
+ &#39;date&#39;: datetime.datetime(2023, 9, 11, 17, 7, 45, tzinfo=datetime.timezone.utc),
+ &#39;request_server_encrypted&#39;: True,
+ &#39;encryption_key_sha256&#39;: None,
+ &#39;encryption_scope&#39;: None}</pre>
 </div>
 
 </div>
