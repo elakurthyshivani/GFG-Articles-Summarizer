@@ -3,7 +3,7 @@
 <head><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>CountVectorizer</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>CassandraUtility</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 
 
 
@@ -14597,7 +14597,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Count-Vectorizer"><strong>Count Vectorizer</strong><a class="anchor-link" href="#Count-Vectorizer">&#182;</a></h1>
+<h1 id="Functions-interacting-with-Amazon-Keyspaces"><strong>Functions interacting with Amazon Keyspaces</strong><a class="anchor-link" href="#Functions-interacting-with-Amazon-Keyspaces">&#182;</a></h1>
 </div>
 </div>
 </div>
@@ -14608,7 +14608,21 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Run-required-Utilities"><strong>Run required Utilities</strong><a class="anchor-link" href="#Run-required-Utilities">&#182;</a></h2>
+<h2 id="createDataFrameFromTable()"><strong><code>createDataFrameFromTable()</code></strong><a class="anchor-link" href="#createDataFrameFromTable()">&#182;</a></h2><p>Create a dataframe from an Amazon Keyspaces / Cassandra table.</p>
+<p><strong>Params</strong>:</p>
+<ul>
+<li><p><code>sparkSession</code>: <code>pyspark.sql.SparkSession</code> variable.</p>
+</li>
+<li><p><code>keyspaceName</code>: Name of the keyspace in Cassandra / Amazon Keyspaces.</p>
+</li>
+<li><p><code>tableName</code>: Name of the table in the keyspace.</p>
+</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<ul>
+<li>PySpark dataframe <code>pyspark.sql.dataframe.DataFrame</code> with the contents of the table.</li>
+</ul>
+
 </div>
 </div>
 </div>
@@ -14620,7 +14634,36 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">run</span> ../utilities/CassandraUtility.ipynb
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">SparkSession</span>
+<span class="kn">from</span> <span class="nn">pyspark.sql.dataframe</span> <span class="kn">import</span> <span class="n">DataFrame</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">createDataFrameFromTable</span><span class="p">(</span><span class="n">sparkSession</span> <span class="p">:</span> <span class="n">SparkSession</span><span class="p">,</span> 
+                             <span class="n">keyspaceName</span> <span class="p">:</span> <span class="nb">str</span><span class="p">,</span> 
+                             <span class="n">tableName</span> <span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DataFrame</span><span class="p">:</span>
+    
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span>\
+              <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;org.apache.spark.sql.cassandra&quot;</span><span class="p">)</span>\
+              <span class="o">.</span><span class="n">options</span><span class="p">(</span><span class="n">table</span><span class="o">=</span><span class="n">tableName</span><span class="p">,</span> <span class="n">keyspace</span><span class="o">=</span><span class="n">keyspaceName</span><span class="p">)</span>\
+              <span class="o">.</span><span class="n">load</span><span class="p">()</span>
+    
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Exception : </span><span class="si">{</span><span class="n">err</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">None</span>
 </pre></div>
 
      </div>
@@ -14635,11 +14678,15 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Read-database-from-Keyspaces-using-PySpark"><strong>Read database from Keyspaces using PySpark</strong><a class="anchor-link" href="#Read-database-from-Keyspaces-using-PySpark">&#182;</a></h2><p><strong>1.</strong> Download the required jar files (<code>spark-cassandra-connector_2.12-3.3.0.jar, spark-cassandra-connector-assembly_2.12-3.3.0.jar</code>).</p>
-<p><strong>2.</strong> Download your <code>cassandra_truststore.jks</code> file.</p>
-<p><strong>3.</strong> Create <code>application.conf</code> file.</p>
-<p><strong>4.</strong> Create <code>SparkSession</code> and set the configuration to connect to Keyspaces using service-specific credentials.</p>
-<p><strong>5.</strong> Read all rows from <code>BasicPreprocessedGFGArticles</code> table, <code>GFGArticles</code> keyspace into PySpark dataframe.</p>
+<h2 id="createSparkSessionWithCassandraConf()"><strong><code>createSparkSessionWithCassandraConf()</code></strong><a class="anchor-link" href="#createSparkSessionWithCassandraConf()">&#182;</a></h2><p>Create a <code>SparkSession</code> with configuration required to connect to Amazon Keyspaces / Cassandra.</p>
+<p><strong>Params</strong>:</p>
+<ul>
+<li><code>appName</code>: Name of the <code>SparkSession</code>.</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<ul>
+<li>PySpark Session <code>pyspark.sql.SparkSession</code> object.</li>
+</ul>
 
 </div>
 </div>
@@ -14649,30 +14696,10 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">SparkSession</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">spark</span><span class="o">=</span><span class="n">createSparkSessionWithCassandraConf</span><span class="p">(</span><span class="s2">&quot;CountVectorizer&quot;</span><span class="p">)</span>
-<span class="c1"># Spark version</span>
-<span class="n">spark</span><span class="o">.</span><span class="n">version</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">SparkSession</span>
 </pre></div>
 
      </div>
@@ -14680,61 +14707,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 </div>
 
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>23/09/27 02:28:41 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
-<pre>Setting default log level to &#34;WARN&#34;.
-To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>23/09/27 02:28:42 WARN Utils: Service &#39;SparkUI&#39; could not bind on port 4040. Attempting port 4041.
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[3]:</div>
-
-
-
-
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>&#39;3.3.0&#39;</pre>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -14742,72 +14715,32 @@ To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLeve
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">articles</span><span class="o">=</span><span class="n">createDataFrameFromTable</span><span class="p">(</span><span class="n">spark</span><span class="p">,</span> <span class="s2">&quot;GFGArticles&quot;</span><span class="p">,</span> <span class="s2">&quot;BasicPreprocessedGFGArticles&quot;</span><span class="p">)</span>
-<span class="n">articles</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">createSparkSessionWithCassandraConf</span><span class="p">(</span><span class="n">appName</span> <span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SparkSession</span><span class="p">:</span>
+    
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">appName</span><span class="p">)</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error : appName cannot be empty.&quot;</span><span class="p">)</span>
+        
+        <span class="n">spark</span><span class="o">=</span><span class="n">SparkSession</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">appName</span><span class="p">(</span><span class="n">appName</span><span class="p">)</span>\
+        <span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s2">&quot;spark.files&quot;</span><span class="p">,</span> <span class="s2">&quot;../application.conf&quot;</span><span class="p">)</span>\
+        <span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s2">&quot;spark.jars&quot;</span><span class="p">,</span> <span class="s2">&quot;../jar-files/spark-cassandra-connector_2.12-3.3.0.jar,&quot;</span>
+                                <span class="s2">&quot;../jar-files/spark-cassandra-connector-assembly_2.12-3.3.0.jar&quot;</span><span class="p">)</span>\
+        <span class="o">.</span><span class="n">getOrCreate</span><span class="p">()</span>
+
+        <span class="n">spark</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;spark.cassandra.connection.config.profile.path&quot;</span><span class="p">,</span> <span class="s2">&quot;application.conf&quot;</span><span class="p">)</span>
+        <span class="n">spark</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;spark.cassandra.connection.ssl.clientAuth.enabled&quot;</span><span class="p">,</span> <span class="s2">&quot;true&quot;</span><span class="p">)</span>
+        <span class="n">spark</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;spark.cassandra.connection.ssl.enabled&quot;</span><span class="p">,</span> <span class="s2">&quot;true&quot;</span><span class="p">)</span>
+        
+        <span class="k">return</span> <span class="n">spark</span>
+    
+    <span class="k">except</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Exception : </span><span class="si">{</span><span class="n">err</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">None</span>
 </pre></div>
 
      </div>
 </div>
 </div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>23/09/27 02:28:45 WARN CassandraConnectionFactory: Ignoring all programmatic configuration, only using configuration from application.conf
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
-<pre>[Stage 0:&gt;                                                          (0 + 1) / 1]</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>+-----+--------------------+
-|   ID| PreprocessedContent|
-+-----+--------------------+
-|29550|functional progra...|
-|28635|give integer n ta...|
-|24783|give integer n ar...|
-|23435|give integer n k ...|
-| 4382|problem use switc...|
-+-----+--------------------+
-only showing top 5 rows
-
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
-<pre>                                                                                </pre>
-</div>
-</div>
-
-</div>
-
 </div>
 
 </div>
@@ -14817,7 +14750,16 @@ only showing top 5 rows
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Convert-the-preprocessed-content-into-tokens"><strong>Convert the preprocessed content into tokens</strong><a class="anchor-link" href="#Convert-the-preprocessed-content-into-tokens">&#182;</a></h2>
+<h2 id="getSizeOfDataFrame():"><strong><code>getSizeOfDataFrame()</code></strong>:<a class="anchor-link" href="#getSizeOfDataFrame():">&#182;</a></h2><p>Amazon Keyspaces does not support COUNT of its table. Get the count of a DataFrame created from an Amazon Keyspace table. Should contain <code>ID</code> column with unique integer values.</p>
+<p><strong>Params</strong>:</p>
+<ul>
+<li><code>dataframe</code>: <code>pyspark.sql.DataFrame</code> variable.</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<ul>
+<li>Count of the PySpark dataframe.</li>
+</ul>
+
 </div>
 </div>
 </div>
@@ -14829,7 +14771,7 @@ only showing top 5 rows
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[5]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.ml.feature</span> <span class="kn">import</span> <span class="n">Tokenizer</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql.dataframe</span> <span class="kn">import</span> <span class="n">DataFrame</span>
 </pre></div>
 
      </div>
@@ -14837,7 +14779,7 @@ only showing top 5 rows
 </div>
 </div>
 
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -14845,45 +14787,19 @@ only showing top 5 rows
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[6]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tokenizer</span><span class="o">=</span><span class="n">Tokenizer</span><span class="p">(</span><span class="n">inputCol</span><span class="o">=</span><span class="s2">&quot;PreprocessedContent&quot;</span><span class="p">,</span> <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;Tokens&quot;</span><span class="p">)</span>
-<span class="n">articles</span><span class="o">=</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">articles</span><span class="p">)</span><span class="o">.</span><span class="n">toDF</span><span class="p">(</span><span class="s2">&quot;ID&quot;</span><span class="p">,</span> <span class="s2">&quot;PreprocessedContent&quot;</span><span class="p">,</span> <span class="s2">&quot;Tokens&quot;</span><span class="p">)</span>
-<span class="n">articles</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">getSizeOfDataFrame</span><span class="p">(</span><span class="n">dataframe</span> <span class="p">:</span> <span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">dataframe</span><span class="p">[[</span><span class="s2">&quot;ID&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">dataframe</span><span class="o">.</span><span class="n">ID</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+    
+    <span class="k">except</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Exception : </span><span class="si">{</span><span class="n">err</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
 </pre></div>
 
      </div>
 </div>
 </div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>+-----+--------------------+--------------------+
-|   ID| PreprocessedContent|              Tokens|
-+-----+--------------------+--------------------+
-|31599|give string conta...|[give, string, co...|
-|14638|primary memory li...|[primary, memory,...|
-| 5992|database offer nu...|[database, offer,...|
-|29258|article learn det...|[article, learn, ...|
-| 7998|give two string x...|[give, two, strin...|
-+-----+--------------------+--------------------+
-only showing top 5 rows
-
-</pre>
-</div>
-</div>
-
-</div>
-
 </div>
 
 </div>
@@ -14893,7 +14809,23 @@ only showing top 5 rows
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="CountVectorizer"><strong>CountVectorizer</strong><a class="anchor-link" href="#CountVectorizer">&#182;</a></h2>
+<h2 id="saveDataFrameToTable()"><strong><code>saveDataFrameToTable()</code></strong><a class="anchor-link" href="#saveDataFrameToTable()">&#182;</a></h2><p>Saves a dataframe to an Amazon Keyspaces / Cassandra table.</p>
+<p><strong>Params</strong>:</p>
+<ul>
+<li><p><code>dataframe</code>: <code>pyspark.sql.DataFrame</code> variable. Should contain <code>ID</code> column with unique integer values.</p>
+</li>
+<li><p><code>keyspaceName</code>: Name of the keyspace in Cassandra / Amazon Keyspaces.</p>
+</li>
+<li><p><code>tableName</code>: Name of the table in the keyspace.</p>
+</li>
+<li><p><code>mode</code>: Mode of saving the dataframe to the table. Default value is <code>APPEND</code>.</p>
+</li>
+<li><p><code>batch_size</code>: Number of rows to save in each batch. To save the whole dataframe at once, pass the total value. Default value is <code>1024</code>.</p>
+</li>
+<li><p><code>verbose</code>: Display console output. Default value is <code>True</code>.</p>
+</li>
+</ul>
+
 </div>
 </div>
 </div>
@@ -14905,7 +14837,7 @@ only showing top 5 rows
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[7]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.ml.feature</span> <span class="kn">import</span> <span class="n">CountVectorizer</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql.dataframe</span> <span class="kn">import</span> <span class="n">DataFrame</span>
 </pre></div>
 
      </div>
@@ -14913,7 +14845,7 @@ only showing top 5 rows
 </div>
 </div>
 
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -14921,10 +14853,35 @@ only showing top 5 rows
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[8]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">countVec</span><span class="o">=</span><span class="n">CountVectorizer</span><span class="p">(</span><span class="n">inputCol</span><span class="o">=</span><span class="s2">&quot;Tokens&quot;</span><span class="p">,</span> <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;Counts&quot;</span><span class="p">,</span> <span class="n">vocabSize</span><span class="o">=</span><span class="mi">50000</span><span class="p">)</span>
-<span class="n">countVecModel</span><span class="o">=</span><span class="n">countVec</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">articles</span><span class="p">)</span>
-<span class="n">articles</span><span class="o">=</span><span class="n">countVecModel</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">articles</span><span class="p">)</span><span class="o">.</span><span class="n">toDF</span><span class="p">(</span><span class="s2">&quot;ID&quot;</span><span class="p">,</span> <span class="s2">&quot;PreprocessedContent&quot;</span><span class="p">,</span> <span class="s2">&quot;Tokens&quot;</span><span class="p">,</span> <span class="s2">&quot;CountVector&quot;</span><span class="p">)</span>
-<span class="n">articles</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">saveDataFrameToTable</span><span class="p">(</span><span class="n">dataframe</span> <span class="p">:</span> <span class="n">DataFrame</span><span class="p">,</span> 
+                         <span class="n">keyspaceName</span> <span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+                         <span class="n">tableName</span> <span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+                         <span class="n">mode</span> <span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s2">&quot;APPEND&quot;</span><span class="p">,</span> 
+                         <span class="n">batch_size</span> <span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="mi">1024</span><span class="p">,</span> 
+                         <span class="n">verbose</span> <span class="p">:</span> <span class="nb">bool</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    
+    <span class="c1"># Invalid batch_size.</span>
+    <span class="k">if</span> <span class="n">batch_size</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Error: batch_size cannot be less than 1&quot;</span><span class="p">)</span>
+    
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># Get the total count of articles.</span>
+        <span class="n">NO_OF_ARTICLES</span><span class="o">=</span><span class="n">getSizeOfDataFrame</span><span class="p">(</span><span class="n">dataframe</span><span class="p">)</span>
+        <span class="n">NO_OF_ARTICLES</span>
+
+        <span class="c1"># Save to table in batches.</span>
+        <span class="k">for</span> <span class="n">start</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">NO_OF_ARTICLES</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">):</span>
+            <span class="n">dataframe</span><span class="o">.</span><span class="n">filter</span><span class="p">((</span><span class="n">dataframe</span><span class="o">.</span><span class="n">ID</span> <span class="o">&gt;=</span> <span class="n">start</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">dataframe</span><span class="o">.</span><span class="n">ID</span> <span class="o">&lt;</span> <span class="n">start</span><span class="o">+</span><span class="n">batch_size</span><span class="p">))</span>\
+                    <span class="o">.</span><span class="n">write</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;org.apache.spark.sql.cassandra&quot;</span><span class="p">)</span>\
+                    <span class="o">.</span><span class="n">options</span><span class="p">(</span><span class="n">table</span><span class="o">=</span><span class="n">tableName</span><span class="p">,</span> <span class="n">keyspace</span><span class="o">=</span><span class="n">keyspaceName</span><span class="p">)</span>\
+                    <span class="o">.</span><span class="n">mode</span><span class="p">(</span><span class="n">mode</span><span class="p">)</span>\
+                    <span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+        <span class="k">if</span><span class="p">(</span><span class="n">verbose</span><span class="p">):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Batch [</span><span class="si">{</span><span class="n">start</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">start</span><span class="o">+</span><span class="n">batch_size</span><span class="o">-</span><span class="mi">1</span><span class="si">}</span><span class="s2">] saved to </span><span class="si">{</span><span class="n">keyspaceName</span><span class="si">}</span><span class="s2">.</span><span class="si">{</span><span class="n">tableName</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+            
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Exception : </span><span class="si">{</span><span class="n">err</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -14932,309 +14889,20 @@ only showing top 5 rows
 </div>
 </div>
 
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
-<pre>                                                                                </pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>+-----+--------------------+--------------------+--------------------+
-|   ID| PreprocessedContent|              Tokens|         CountVector|
-+-----+--------------------+--------------------+--------------------+
-| 8547|e f codd propose ...|[e, f, codd, prop...|(50000,[0,1,2,4,6...|
-| 4232|give string task ...|[give, string, ta...|(50000,[1,2,3,8,9...|
-| 8147|give n triangle a...|[give, n, triangl...|(50000,[0,1,2,3,4...|
-|24868|s1 anyone followi...|[s1, anyone, foll...|(50000,[1,9,19,20...|
-| 3863|give task find va...|[give, task, find...|(50000,[0,1,2,3,4...|
-+-----+--------------------+--------------------+--------------------+
-only showing top 5 rows
-
-</pre>
-</div>
-</div>
-
-</div>
-
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[9]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Look into the schema</span>
-<span class="n">articles</span><span class="o">.</span><span class="n">printSchema</span><span class="p">()</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>root
- |-- ID: integer (nullable = false)
- |-- PreprocessedContent: string (nullable = true)
- |-- Tokens: array (nullable = true)
- |    |-- element: string (containsNull = true)
- |-- CountVector: vector (nullable = true)
-
-</pre>
-</div>
-</div>
-
-</div>
-
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[10]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Look into the schema</span>
-<span class="n">articles</span><span class="o">.</span><span class="n">schema</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[10]:</div>
-
-
-
-
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>StructType([StructField(&#39;ID&#39;, IntegerType(), False), StructField(&#39;PreprocessedContent&#39;, StringType(), True), StructField(&#39;Tokens&#39;, ArrayType(StringType(), True), True), StructField(&#39;CountVector&#39;, VectorUDT(), True)])</pre>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Transform-the-CountVector-into-separate-columns"><strong>Transform the <code>CountVector</code> into separate columns</strong><a class="anchor-link" href="#Transform-the-CountVector-into-separate-columns">&#182;</a></h2>
-</div>
-</div>
-</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[11]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql.functions</span> <span class="kn">import</span> <span class="n">col</span><span class="p">,</span> <span class="n">lit</span><span class="p">,</span> <span class="n">udf</span>
-<span class="kn">from</span> <span class="nn">pyspark.sql.types</span> <span class="kn">import</span> <span class="n">ArrayType</span><span class="p">,</span> <span class="n">IntegerType</span>
+<div class=" highlight hl-ipython3"><pre><span></span> 
 </pre></div>
 
      </div>
 </div>
 </div>
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[12]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># articles=articles.withColumn(&quot;FeaturesCount&quot;, udf(lambda countVector : countVector.size, </span>
-<span class="c1">#                                          IntegerType())(col(&quot;CountVector&quot;)))</span>
-<span class="n">articles</span><span class="o">=</span><span class="n">articles</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s2">&quot;FeaturesIndices&quot;</span><span class="p">,</span> <span class="n">udf</span><span class="p">(</span><span class="k">lambda</span> <span class="n">countVector</span> <span class="p">:</span> <span class="n">countVector</span><span class="o">.</span><span class="n">indices</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> 
-                                           <span class="n">ArrayType</span><span class="p">(</span><span class="n">IntegerType</span><span class="p">()))(</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;CountVector&quot;</span><span class="p">)))</span>
-<span class="n">articles</span><span class="o">=</span><span class="n">articles</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s2">&quot;FeaturesValues&quot;</span><span class="p">,</span> <span class="n">udf</span><span class="p">(</span><span class="k">lambda</span> <span class="n">countVector</span> <span class="p">:</span> <span class="n">countVector</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> 
-                                           <span class="n">ArrayType</span><span class="p">(</span><span class="n">IntegerType</span><span class="p">()))(</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;CountVector&quot;</span><span class="p">)))</span>
-<span class="n">articles</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
-<pre>[Stage 7:&gt;                                                          (0 + 1) / 1]</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>+-----+--------------------+--------------------+--------------------+--------------------+--------------------+
-|   ID| PreprocessedContent|              Tokens|         CountVector|     FeaturesIndices|      FeaturesValues|
-+-----+--------------------+--------------------+--------------------+--------------------+--------------------+
-| 8547|e f codd propose ...|[e, f, codd, prop...|(50000,[0,1,2,4,6...|[0, 1, 2, 4, 6, 7...|[8, 10, 6, 3, 3, ...|
-| 4232|give string task ...|[give, string, ta...|(50000,[1,2,3,8,9...|[1, 2, 3, 8, 9, 1...|[1, 2, 4, 2, 3, 2...|
-| 8147|give n triangle a...|[give, n, triangl...|(50000,[0,1,2,3,4...|[0, 1, 2, 3, 4, 5...|[2, 5, 5, 6, 2, 2...|
-|24868|s1 anyone followi...|[s1, anyone, foll...|(50000,[1,9,19,20...|[1, 9, 19, 20, 22...|[13, 1, 1, 5, 1, ...|
-| 3863|give task find va...|[give, task, find...|(50000,[0,1,2,3,4...|[0, 1, 2, 3, 4, 5...|[6, 3, 5, 3, 3, 4...|
-+-----+--------------------+--------------------+--------------------+--------------------+--------------------+
-only showing top 5 rows
-
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
-<pre>                                                                                </pre>
-</div>
-</div>
-
-</div>
-
-</div>
-
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Write-to-a-new-table-in-Keyspaces"><strong>Write to a new table in Keyspaces</strong><a class="anchor-link" href="#Write-to-a-new-table-in-Keyspaces">&#182;</a></h2>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[13]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">BATCH_SIZE</span><span class="o">=</span><span class="mi">1024</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[14]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">saveDataFrameToTable</span><span class="p">(</span><span class="n">articles</span><span class="p">[[</span><span class="s2">&quot;ID&quot;</span><span class="p">,</span> <span class="s2">&quot;FeaturesIndices&quot;</span><span class="p">,</span> <span class="s2">&quot;FeaturesValues&quot;</span><span class="p">]],</span> <span class="s2">&quot;GFGArticles&quot;</span><span class="p">,</span> <span class="s2">&quot;CountVectorGFGArticles&quot;</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
-<pre>[Stage 44:================================&gt;                         (5 + 4) / 9]</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Batch [33792, 34815] saved to GFGArticles.CountVectorGFGArticles.
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
-<pre>                                                                                </pre>
-</div>
-</div>
-
-</div>
-
 </div>
 
 </div>
