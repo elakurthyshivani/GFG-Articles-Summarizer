@@ -3,7 +3,7 @@
 <head><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>CountVectorizer</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>TFIDFVectorizer</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 
 
 
@@ -14597,7 +14597,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Count-Vectorizer"><strong>Count Vectorizer</strong><a class="anchor-link" href="#Count-Vectorizer">&#182;</a></h1>
+<h1 id="TFIDF-Vectorizer"><strong>TFIDF Vectorizer</strong><a class="anchor-link" href="#TFIDF-Vectorizer">&#182;</a></h1>
 </div>
 </div>
 </div>
@@ -14670,7 +14670,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">spark</span><span class="o">=</span><span class="n">createSparkSessionWithCassandraConf</span><span class="p">(</span><span class="s2">&quot;CountVectorizer&quot;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">spark</span><span class="o">=</span><span class="n">createSparkSessionWithCassandraConf</span><span class="p">(</span><span class="s2">&quot;TFIDFVectorizer&quot;</span><span class="p">)</span>
 <span class="c1"># Spark version</span>
 <span class="n">spark</span><span class="o">.</span><span class="n">version</span>
 </pre></div>
@@ -14692,7 +14692,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>23/09/27 02:28:41 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+<pre>23/09/27 02:37:08 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
 </pre>
 </div>
 </div>
@@ -14704,16 +14704,6 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
 <pre>Setting default log level to &#34;WARN&#34;.
 To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>23/09/27 02:28:42 WARN Utils: Service &#39;SparkUI&#39; could not bind on port 4040. Attempting port 4041.
 </pre>
 </div>
 </div>
@@ -14763,7 +14753,7 @@ To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLeve
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>23/09/27 02:28:45 WARN CassandraConnectionFactory: Ignoring all programmatic configuration, only using configuration from application.conf
+<pre>23/09/27 02:37:13 WARN CassandraConnectionFactory: Ignoring all programmatic configuration, only using configuration from application.conf
 </pre>
 </div>
 </div>
@@ -14785,11 +14775,11 @@ To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLeve
 <pre>+-----+--------------------+
 |   ID| PreprocessedContent|
 +-----+--------------------+
-|29550|functional progra...|
-|28635|give integer n ta...|
-|24783|give integer n ar...|
-|23435|give integer n k ...|
-| 4382|problem use switc...|
+| 2218|matplotlib highly...|
+|20243|give string str l...|
+|17714|c variable always...|
+|19583|want share interv...|
+|16870|string basic cove...|
 +-----+--------------------+
 only showing top 5 rows
 
@@ -14870,11 +14860,11 @@ only showing top 5 rows
 <pre>+-----+--------------------+--------------------+
 |   ID| PreprocessedContent|              Tokens|
 +-----+--------------------+--------------------+
-|31599|give string conta...|[give, string, co...|
-|14638|primary memory li...|[primary, memory,...|
-| 5992|database offer nu...|[database, offer,...|
-|29258|article learn det...|[article, learn, ...|
-| 7998|give two string x...|[give, two, strin...|
+|29550|functional progra...|[functional, prog...|
+|28635|give integer n ta...|[give, integer, n...|
+|24783|give integer n ar...|[give, integer, n...|
+|23435|give integer n k ...|[give, integer, n...|
+| 4382|problem use switc...|[problem, use, sw...|
 +-----+--------------------+--------------------+
 only showing top 5 rows
 
@@ -14893,7 +14883,7 @@ only showing top 5 rows
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="CountVectorizer"><strong>CountVectorizer</strong><a class="anchor-link" href="#CountVectorizer">&#182;</a></h2>
+<h2 id="HashingTF-and-IDF-Vectorizer"><strong>HashingTF and IDF Vectorizer</strong><a class="anchor-link" href="#HashingTF-and-IDF-Vectorizer">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -14905,7 +14895,7 @@ only showing top 5 rows
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[7]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.ml.feature</span> <span class="kn">import</span> <span class="n">CountVectorizer</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.ml.feature</span> <span class="kn">import</span> <span class="n">HashingTF</span><span class="p">,</span> <span class="n">IDF</span>
 </pre></div>
 
      </div>
@@ -14921,9 +14911,58 @@ only showing top 5 rows
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[8]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">countVec</span><span class="o">=</span><span class="n">CountVectorizer</span><span class="p">(</span><span class="n">inputCol</span><span class="o">=</span><span class="s2">&quot;Tokens&quot;</span><span class="p">,</span> <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;Counts&quot;</span><span class="p">,</span> <span class="n">vocabSize</span><span class="o">=</span><span class="mi">50000</span><span class="p">)</span>
-<span class="n">countVecModel</span><span class="o">=</span><span class="n">countVec</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">articles</span><span class="p">)</span>
-<span class="n">articles</span><span class="o">=</span><span class="n">countVecModel</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">articles</span><span class="p">)</span><span class="o">.</span><span class="n">toDF</span><span class="p">(</span><span class="s2">&quot;ID&quot;</span><span class="p">,</span> <span class="s2">&quot;PreprocessedContent&quot;</span><span class="p">,</span> <span class="s2">&quot;Tokens&quot;</span><span class="p">,</span> <span class="s2">&quot;CountVector&quot;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tfVec</span><span class="o">=</span><span class="n">HashingTF</span><span class="p">(</span><span class="n">inputCol</span><span class="o">=</span><span class="s2">&quot;Tokens&quot;</span><span class="p">,</span> <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;TFVector&quot;</span><span class="p">,</span> <span class="n">numFeatures</span><span class="o">=</span><span class="mi">50000</span><span class="p">)</span>
+<span class="n">tfArticles</span><span class="o">=</span><span class="n">tfVec</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">articles</span><span class="p">)</span>
+<span class="n">tfArticles</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>+-----+--------------------+--------------------+--------------------+
+|   ID| PreprocessedContent|              Tokens|            TFVector|
++-----+--------------------+--------------------+--------------------+
+|23474|resizable propert...|[resizable, prope...|(50000,[459,2143,...|
+| 3531|sometimes require...|[sometimes, requi...|(50000,[480,564,1...|
+|22273|javascript synchr...|[javascript, sync...|(50000,[573,668,2...|
+|24847|give non negative...|[give, non, negat...|(50000,[3095,4265...|
+|23798|non homogeneous p...|[non, homogeneous...|(50000,[453,922,1...|
++-----+--------------------+--------------------+--------------------+
+only showing top 5 rows
+
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[9]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">idfVec</span><span class="o">=</span><span class="n">IDF</span><span class="p">(</span><span class="n">inputCol</span><span class="o">=</span><span class="s2">&quot;TFVector&quot;</span><span class="p">,</span> <span class="n">outputCol</span><span class="o">=</span><span class="s2">&quot;TFIDFVector&quot;</span><span class="p">)</span>
+<span class="n">idfVecModel</span><span class="o">=</span><span class="n">idfVec</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">tfArticles</span><span class="p">)</span>
+<span class="n">articles</span><span class="o">=</span><span class="n">idfVecModel</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">tfArticles</span><span class="p">)</span><span class="o">.</span><span class="n">toDF</span><span class="p">(</span><span class="s2">&quot;ID&quot;</span><span class="p">,</span> <span class="s2">&quot;PreprocessedContent&quot;</span><span class="p">,</span> <span class="s2">&quot;Tokens&quot;</span><span class="p">,</span> <span class="s2">&quot;TFVector&quot;</span><span class="p">,</span> <span class="s2">&quot;TFIDFVector&quot;</span><span class="p">)</span>
 <span class="n">articles</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
 
@@ -14953,15 +14992,15 @@ only showing top 5 rows
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>+-----+--------------------+--------------------+--------------------+
-|   ID| PreprocessedContent|              Tokens|         CountVector|
-+-----+--------------------+--------------------+--------------------+
-| 8547|e f codd propose ...|[e, f, codd, prop...|(50000,[0,1,2,4,6...|
-| 4232|give string task ...|[give, string, ta...|(50000,[1,2,3,8,9...|
-| 8147|give n triangle a...|[give, n, triangl...|(50000,[0,1,2,3,4...|
-|24868|s1 anyone followi...|[s1, anyone, foll...|(50000,[1,9,19,20...|
-| 3863|give task find va...|[give, task, find...|(50000,[0,1,2,3,4...|
-+-----+--------------------+--------------------+--------------------+
+<pre>+-----+--------------------+--------------------+--------------------+--------------------+
+|   ID| PreprocessedContent|              Tokens|            TFVector|         TFIDFVector|
++-----+--------------------+--------------------+--------------------+--------------------+
+|21711|parametric method...|[parametric, meth...|(50000,[572,1195,...|(50000,[572,1195,...|
+|24672|give two positive...|[give, two, posit...|(50000,[564,1659,...|(50000,[564,1659,...|
+| 7520|maximum number sq...|[maximum, number,...|(50000,[223,743,1...|(50000,[223,743,1...|
+|14521|10th september tc...|[10th, september,...|(50000,[440,585,6...|(50000,[440,585,6...|
+|16910|generator python ...|[generator, pytho...|(50000,[453,666,9...|(50000,[453,666,9...|
++-----+--------------------+--------------------+--------------------+--------------------+
 only showing top 5 rows
 
 </pre>
@@ -14977,7 +15016,7 @@ only showing top 5 rows
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[9]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[10]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Look into the schema</span>
@@ -15006,7 +15045,8 @@ only showing top 5 rows
  |-- PreprocessedContent: string (nullable = true)
  |-- Tokens: array (nullable = true)
  |    |-- element: string (containsNull = true)
- |-- CountVector: vector (nullable = true)
+ |-- TFVector: vector (nullable = true)
+ |-- TFIDFVector: vector (nullable = true)
 
 </pre>
 </div>
@@ -15021,7 +15061,7 @@ only showing top 5 rows
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[10]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[11]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Look into the schema</span>
@@ -15041,13 +15081,13 @@ only showing top 5 rows
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[10]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[11]:</div>
 
 
 
 
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>StructType([StructField(&#39;ID&#39;, IntegerType(), False), StructField(&#39;PreprocessedContent&#39;, StringType(), True), StructField(&#39;Tokens&#39;, ArrayType(StringType(), True), True), StructField(&#39;CountVector&#39;, VectorUDT(), True)])</pre>
+<pre>StructType([StructField(&#39;ID&#39;, IntegerType(), False), StructField(&#39;PreprocessedContent&#39;, StringType(), True), StructField(&#39;Tokens&#39;, ArrayType(StringType(), True), True), StructField(&#39;TFVector&#39;, VectorUDT(), True), StructField(&#39;TFIDFVector&#39;, VectorUDT(), True)])</pre>
 </div>
 
 </div>
@@ -15063,7 +15103,7 @@ only showing top 5 rows
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Transform-the-CountVector-into-separate-columns"><strong>Transform the <code>CountVector</code> into separate columns</strong><a class="anchor-link" href="#Transform-the-CountVector-into-separate-columns">&#182;</a></h2>
+<h2 id="Transform-the-TFIDFVector-into-separate-columns"><strong>Transform the <code>TFIDFVector</code> into separate columns</strong><a class="anchor-link" href="#Transform-the-TFIDFVector-into-separate-columns">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -15072,10 +15112,10 @@ only showing top 5 rows
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[11]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[12]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql.functions</span> <span class="kn">import</span> <span class="n">col</span><span class="p">,</span> <span class="n">lit</span><span class="p">,</span> <span class="n">udf</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql.functions</span> <span class="kn">import</span> <span class="n">col</span><span class="p">,</span> <span class="n">udf</span>
 <span class="kn">from</span> <span class="nn">pyspark.sql.types</span> <span class="kn">import</span> <span class="n">ArrayType</span><span class="p">,</span> <span class="n">IntegerType</span>
 </pre></div>
 
@@ -15089,15 +15129,15 @@ only showing top 5 rows
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[12]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[13]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># articles=articles.withColumn(&quot;FeaturesCount&quot;, udf(lambda countVector : countVector.size, </span>
-<span class="c1">#                                          IntegerType())(col(&quot;CountVector&quot;)))</span>
-<span class="n">articles</span><span class="o">=</span><span class="n">articles</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s2">&quot;FeaturesIndices&quot;</span><span class="p">,</span> <span class="n">udf</span><span class="p">(</span><span class="k">lambda</span> <span class="n">countVector</span> <span class="p">:</span> <span class="n">countVector</span><span class="o">.</span><span class="n">indices</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> 
-                                           <span class="n">ArrayType</span><span class="p">(</span><span class="n">IntegerType</span><span class="p">()))(</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;CountVector&quot;</span><span class="p">)))</span>
-<span class="n">articles</span><span class="o">=</span><span class="n">articles</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s2">&quot;FeaturesValues&quot;</span><span class="p">,</span> <span class="n">udf</span><span class="p">(</span><span class="k">lambda</span> <span class="n">countVector</span> <span class="p">:</span> <span class="n">countVector</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> 
-                                           <span class="n">ArrayType</span><span class="p">(</span><span class="n">IntegerType</span><span class="p">()))(</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;CountVector&quot;</span><span class="p">)))</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># articles=articles.withColumn(&quot;FeaturesCount&quot;, udf(lambda tfidfVector : tfidfVector.size, </span>
+<span class="c1">#                                          IntegerType())(col(&quot;TFIDFVector&quot;)))</span>
+<span class="n">articles</span><span class="o">=</span><span class="n">articles</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s2">&quot;FeaturesIndices&quot;</span><span class="p">,</span> <span class="n">udf</span><span class="p">(</span><span class="k">lambda</span> <span class="n">tfidfVector</span> <span class="p">:</span> <span class="n">tfidfVector</span><span class="o">.</span><span class="n">indices</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> 
+                                           <span class="n">ArrayType</span><span class="p">(</span><span class="n">IntegerType</span><span class="p">()))(</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;TFIDFVector&quot;</span><span class="p">)))</span>
+<span class="n">articles</span><span class="o">=</span><span class="n">articles</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s2">&quot;FeaturesValues&quot;</span><span class="p">,</span> <span class="n">udf</span><span class="p">(</span><span class="k">lambda</span> <span class="n">tfidfVector</span> <span class="p">:</span> <span class="n">tfidfVector</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> 
+                                           <span class="n">ArrayType</span><span class="p">(</span><span class="n">IntegerType</span><span class="p">()))(</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;TFIDFVector&quot;</span><span class="p">)))</span>
 <span class="n">articles</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
 
@@ -15118,7 +15158,7 @@ only showing top 5 rows
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
-<pre>[Stage 7:&gt;                                                          (0 + 1) / 1]</pre>
+<pre>[Stage 6:&gt;                                                          (0 + 1) / 1]</pre>
 </div>
 </div>
 <div class="jp-OutputArea-child">
@@ -15127,15 +15167,15 @@ only showing top 5 rows
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>+-----+--------------------+--------------------+--------------------+--------------------+--------------------+
-|   ID| PreprocessedContent|              Tokens|         CountVector|     FeaturesIndices|      FeaturesValues|
-+-----+--------------------+--------------------+--------------------+--------------------+--------------------+
-| 8547|e f codd propose ...|[e, f, codd, prop...|(50000,[0,1,2,4,6...|[0, 1, 2, 4, 6, 7...|[8, 10, 6, 3, 3, ...|
-| 4232|give string task ...|[give, string, ta...|(50000,[1,2,3,8,9...|[1, 2, 3, 8, 9, 1...|[1, 2, 4, 2, 3, 2...|
-| 8147|give n triangle a...|[give, n, triangl...|(50000,[0,1,2,3,4...|[0, 1, 2, 3, 4, 5...|[2, 5, 5, 6, 2, 2...|
-|24868|s1 anyone followi...|[s1, anyone, foll...|(50000,[1,9,19,20...|[1, 9, 19, 20, 22...|[13, 1, 1, 5, 1, ...|
-| 3863|give task find va...|[give, task, find...|(50000,[0,1,2,3,4...|[0, 1, 2, 3, 4, 5...|[6, 3, 5, 3, 3, 4...|
-+-----+--------------------+--------------------+--------------------+--------------------+--------------------+
+<pre>+-----+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+
+|   ID| PreprocessedContent|              Tokens|            TFVector|         TFIDFVector|     FeaturesIndices|      FeaturesValues|
++-----+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+
+|31599|give string conta...|[give, string, co...|(50000,[453,1143,...|(50000,[453,1143,...|[453, 1143, 2037,...|[5, 4, 4, 2, 5, 3...|
+|14638|primary memory li...|[primary, memory,...|(50000,[417,573,5...|(50000,[417,573,5...|[417, 573, 586, 1...|[4, 8, 23, 3, 6, ...|
+| 5992|database offer nu...|[database, offer,...|(50000,[261,814,2...|(50000,[261,814,2...|[261, 814, 2093, ...|[4, 4, 8, 3, 1, 6...|
+|29258|article learn det...|[article, learn, ...|(50000,[564,1652,...|(50000,[564,1652,...|[564, 1652, 1998,...|[3, 2, 20, 2, 22,...|
+| 7998|give two string x...|[give, two, strin...|(50000,[922,4165,...|(50000,[922,4165,...|[922, 4165, 4265,...|[15, 1, 1, 4, 0, ...|
++-----+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+
 only showing top 5 rows
 
 </pre>
@@ -15171,7 +15211,7 @@ only showing top 5 rows
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[13]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[14]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">BATCH_SIZE</span><span class="o">=</span><span class="mi">1024</span>
@@ -15187,10 +15227,10 @@ only showing top 5 rows
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[14]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[15]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">saveDataFrameToTable</span><span class="p">(</span><span class="n">articles</span><span class="p">[[</span><span class="s2">&quot;ID&quot;</span><span class="p">,</span> <span class="s2">&quot;FeaturesIndices&quot;</span><span class="p">,</span> <span class="s2">&quot;FeaturesValues&quot;</span><span class="p">]],</span> <span class="s2">&quot;GFGArticles&quot;</span><span class="p">,</span> <span class="s2">&quot;CountVectorGFGArticles&quot;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">saveDataFrameToTable</span><span class="p">(</span><span class="n">articles</span><span class="p">[[</span><span class="s2">&quot;ID&quot;</span><span class="p">,</span> <span class="s2">&quot;FeaturesIndices&quot;</span><span class="p">,</span> <span class="s2">&quot;FeaturesValues&quot;</span><span class="p">]],</span> <span class="s2">&quot;GFGArticles&quot;</span><span class="p">,</span> <span class="s2">&quot;TFIDFVectorGFGArticles&quot;</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -15210,7 +15250,7 @@ only showing top 5 rows
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
-<pre>[Stage 44:================================&gt;                         (5 + 4) / 9]</pre>
+<pre>[Stage 43:===================================================&gt;      (8 + 1) / 9]</pre>
 </div>
 </div>
 <div class="jp-OutputArea-child">
@@ -15219,7 +15259,7 @@ only showing top 5 rows
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Batch [33792, 34815] saved to GFGArticles.CountVectorGFGArticles.
+<pre>Batch [33792, 34815] saved to GFGArticles.TFIDFVectorGFGArticles.
 </pre>
 </div>
 </div>
